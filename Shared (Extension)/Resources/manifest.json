@@ -5,7 +5,7 @@
 	"description": "Several tools for Torn.",
 	"icons": { "16": "resource/images/icon_16.png", "48": "resource/images/icon_48.png", "128": "resource/images/icon_128.png" },
       "content_security_policy": {
-        "extension_pages": "script-src 'self' https://*.torn.com; object-src 'self'; style-src 'self';",
+        "extension_pages": "script-src 'self' https://*.torn.com; object-src 'self'; style-src 'self' 'https://*.torn.com' 'unsafe-inline';",
         "sandbox": "allow-scripts; allow-same-origin;",
         "script-src": "'self' https://*.torn.com",
         "connect-src": "'self' https://*.torn.com"

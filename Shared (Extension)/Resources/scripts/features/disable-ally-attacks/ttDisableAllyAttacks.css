@@ -1,14 +1,9 @@
 .tt-disable-ally.tt-cross {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: absolute;
 	width: 35px;
 	height: 35px;
 	padding: 7px;
-	transform: translate(-7%, -100%);
-    opacity: 10;
-    z-index: 100;
+    transform: translate(-7%, -100%);
 }
 
 .tt-disable-ally-attack {

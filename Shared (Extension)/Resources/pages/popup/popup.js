@@ -81,12 +81,12 @@ async function showPage(name) {
 }
 
 async function setupInitialize() {
-    const pagesElement = document.querySelector("#pages");
+    const pagesElement = document.find("#pages");
     pagesElement.classList.add("tt-hidden");
 
-    const apiKeyButton = document.querySelector("#set_api_key");
+    const apiKeyButton = document.find("#set_api_key");
     apiKeyButton.addEventListener("click", () => {
-        const key = document.querySelector("#api_key").value;
+        const key = document.find("#api_key").value;
 
         checkAPIPermission(key)
             .then((granted) => {
@@ -97,7 +97,7 @@ async function setupInitialize() {
                         if (granted) {
                             // await showPage(settings.pages.popup.defaultTab);
                         } else {
-                            const permissionError = document.querySelector(".permission-error");
+                            const permissionError = document.find(".permission-error");
                             permissionError.classList.remove("tt-hidden");
                             permissionError.textContent = "Your API key is not the correct API level. This will affect a lot of features.";
 
@@ -114,13 +114,13 @@ async function setupInitialize() {
             .catch((error) => showError(error.error));
     });
 
-    const apiQuickLink = document.querySelector("#api_quicklink");
+    const apiQuickLink = document.find("#api_quicklink");
     apiQuickLink.addEventListener("click", () => {
         window.open("https://www.torn.com/preferences.php#tab=api", "_blank");
     });
 
     function showError(message) {
-        const errorElement = document.querySelector(".error");
+        const errorElement = document.find(".error");
         errorElement.classList.remove("tt-hidden");
         errorElement.textContent = message;
     }

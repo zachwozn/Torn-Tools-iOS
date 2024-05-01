@@ -1,0 +1,43 @@
+.tt-bank-investment-balance-input {
+	padding: 5px 3px;
+}
+
+.tt-bank-investment-balance-input input {
+	color: var(--input-color);
+	border-radius: 5px;
+	border: 1px solid var(--input-border-color);
+	background: var(--input-background-color);
+	padding: 4px;
+	-moz-appearance: textfield;
+}
+
+.tt-bank-investment-balance-input input::-webkit-outer-spin-button,
+.tt-bank-investment-balance-input input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+body:not(.dark-mode) .tt-bank-investment-selected-row {
+	background-color: #9bff9b;
+}
+
+body.dark-mode .tt-bank-investment-selected-row {
+	background-color: #207037;
+}
+
+.bank-investment-money-cell-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.bank-investment-money-cell-total {
+	font-size: 1rem;
+}
+
+body:not(.dark-mode) .bank-investment-money-cell-per-day {
+	color: #0f4983;
+}
+
+body.dark-mode .bank-investment-money-cell-per-day {
+	color: #60e5ff;
+}

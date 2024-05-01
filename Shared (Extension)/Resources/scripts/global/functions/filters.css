@@ -1,0 +1,166 @@
+.filter-container + * {
+	margin-top: 0 !important;
+}
+
+.filter-header {
+	margin-bottom: 10px;
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.filter-header .statistic span {
+	font-weight: bold;
+}
+
+.filter-content {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.tt-mobile .filter-content .filter-wrap {
+	flex: 1 0 100%;
+}
+
+.filter-wrap {
+	flex: 1 0 auto;
+	margin-bottom: 10px;
+}
+
+.filter-subwrap {
+	flex: 1 0 auto;
+	margin-bottom: 10px;
+}
+
+.filter-wrap .filter-heading {
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.filter-slider {
+	width: 70%;
+	margin: auto auto 10px;
+}
+
+.filter-slider + .filter-slider-info {
+	width: 100%;
+	text-align: center;
+}
+
+.filter-wrap select {
+	width: fit-content;
+	display: block;
+	margin: auto;
+}
+
+.filter-hidden,
+.filter-hidden + .tt-user-info {
+	display: none !important;
+}
+
+.filter-multi-wrap {
+	width: fit-content;
+	margin: auto;
+}
+
+.tt-mobile .filter-multi-wrap {
+	width: 80%;
+	display: flex;
+}
+
+.tt-mobile .filter-multi-wrap > * {
+	flex: 1 0 auto;
+}
+
+.tt-checkbox-wrap input {
+	height: 13px;
+	position: relative;
+	top: -2px;
+	cursor: pointer;
+	margin: 1px 5px 0;
+}
+
+.tt-checkbox-wrap *,
+.tt-input-wrap * {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.filter-header .statistic {
+	margin: 5px 10px 0 0;
+}
+
+/* New Filters CSS Model */
+.tt-filter {
+	font-family: Arial;
+}
+
+.tt-filter .statistics {
+	width: 100%;
+	text-align: right;
+	padding-top: 5px;
+	transform: translateX(-10px);
+}
+
+.tt-filter .content {
+	display: flex;
+	width: 100%;
+	justify-content: space-evenly;
+	padding: 10px 0;
+}
+
+body.tt-mobile .tt-filter .content,
+body.tt-tablet .tt-filter .content {
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+}
+
+body.tt-mobile .tt-filter .content .tt-checkbox-wrapper,
+body.tt-tablet .tt-filter .content .tt-checkbox-wrapper {
+	margin: 1px 0;
+}
+
+.tt-filter .content .tt-yn-checkboxes > div {
+	display: flex;
+	align-items: center;
+}
+
+.tt-filter .content .tt-yn-checkboxes label {
+	margin-left: 4px;
+}
+
+.tt-filter .content > div {
+	text-align: center;
+}
+
+body.tt-mobile .tt-filter .content > div,
+body.tt-tablet .tt-filter .content > div {
+	margin-bottom: 12px;
+}
+
+.tt-filter .content strong {
+	display: block;
+	margin-bottom: 2px;
+}
+
+.tt-filter .content .tt-slider {
+	padding: 0 10px;
+}
+
+.tt-filter .content .slider-counter {
+	margin-top: 5px;
+}
+
+.weaponBonus__section-class {
+	display: grid;
+	grid-template:
+		"title title" auto
+		"b1    v1" auto
+		"b2    v2" auto / 1fr 0.5fr;
+	gap: 4px;
+}
+
+.weaponBonus__section-class strong {
+	grid-area: title;
+}

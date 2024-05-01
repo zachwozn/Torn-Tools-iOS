@@ -1,0 +1,47 @@
+.tt-custom-link-container {
+	margin-bottom: 2px;
+}
+
+:is(.tt-mobile, .tt-tablet) .tt-custom-links-container {
+	display: flex;
+	border-bottom: 1px solid #000;
+	background-color: #85b005;
+	line-height: 16px;
+	list-style: none;
+	border-bottom: 1px solid #000;
+	overflow: scroll;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+:is(.tt-mobile, .tt-tablet) .tt-custom-links-container::-webkit-scrollbar {
+	display: none;
+}
+
+:is(.tt-mobile, .tt-tablet) .tt-custom-links-container .tt-slide {
+	height: 100%;
+	padding: 0 2px;
+	text-align: center;
+	flex-shrink: 0;
+}
+
+:is(.tt-mobile, .tt-tablet) .tt-custom-links-container .tt-mobile-link {
+	color: #333;
+	font-weight: bold;
+	font-size: 12px;
+	padding: 0 5px;
+	text-decoration: none;
+}
+
+:is(.tt-mobile, .tt-tablet) .dummy-div {
+	margin-top: 17px;
+}
+
+.tt-tablet .tt-custom-link-container .pill {
+	font-size: 13px;
+}
+
+.tt-custom-link-container .pill > a,
+.pill.custom-link > a {
+	width: 100%;
+}

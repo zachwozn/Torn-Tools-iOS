@@ -1,0 +1,845 @@
+{
+	"manifest_version": 3,
+	"name": "TornTools",
+	"version": "7.0.0",
+	"description": "Several tools for Torn.",
+	"icons": { "16": "resource/images/icon_16.png", "48": "resource/images/icon_48.png", "128": "resource/images/icon_128.png" },
+      "content_security_policy": {
+        "extension_pages": "script-src 'self' https://*.torn.com; object-src 'self'; style-src 'self';",
+        "sandbox": "allow-scripts; allow-same-origin;",
+        "script-src": "'self' https://*.torn.com",
+        "connect-src": "'self' https://*.torn.com"
+      },
+    "default_locale": "en",
+	"action": { "default_title": "TornTools", "default_popup": "pages/popup/popup.html", "default_icon": "resource/images/icon_128.png" },
+	"author": "Gregor Kaljulaid - Mephiles[2087524]",
+	"background": {
+		"scripts": [
+			"scripts/global/globalClasses.js",
+			"scripts/global/globalData.js",
+			"scripts/global/functions/browser.js",
+			"scripts/global/functions/database.js",
+			"scripts/global/functions/extension.js",
+			"scripts/global/functions/formatting.js",
+			"scripts/global/functions/utilities.js",
+			"scripts/global/functions/api.js",
+			"scripts/global/functions/torn.js",
+			"scripts/background.js"
+		],
+        "persistent": false
+	},
+	"permissions": ["scripting", "storage", "notifications", "background", "activeTab", "offscreen", "alarms", "<all_urls>"],
+	"host_permissions": ["https://api.torn.com/"],
+	"optional_host_permissions": [
+		"https://www.tornstats.com/",
+		"https://yata.yt/",
+		"https://www.nukefamily.org/",
+		"https://tornuhc.eu/",
+		"https://inq.mavri.dev/",
+		"https://api.no1irishstig.co.uk/",
+		"https://prombot.co.uk:8443/",
+		"https://api.lzpt.io/",
+		"https://what-the-f.de/"
+	],
+	"web_accessible_resources": [
+		{
+			"resources": [
+				"resource/images/*.png",
+				"resource/images/svg-icons/*.svg",
+				"resource/audio/*.wav",
+				"pages/*",
+				"scripts/background.js",
+				"scripts/*.inject.js",
+				"scripts/features/no-confirm/*.inject.js",
+				"vendor/*",
+				"scripts/features/points-value/ttPointsValue.inject.js"
+			],
+			"matches": ["https://*.torn.com/*"]
+		}
+	],
+	"options_ui": { "page": "pages/settings/settings.html", "open_in_tab": true },
+	"browser_specific_settings": { "gecko": { "id": "{3754707b-1aa4-4c6f-96e7-5b1cdc1de5f9}" } },
+	"content_scripts": [
+		{
+			"matches": ["https://www.torn.com/*.php*"],
+			"exclude_matches": ["https://www.torn.com/logout.php*"],
+			"css": [
+				"scripts/global/globalVariables.css",
+				"scripts/global/globalStyle.css",
+				"scripts/global/functions/containers.css",
+				"scripts/global/functions/dom.css",
+				"scripts/global/elements/checkbox/ttCheckbox.css",
+				"scripts/global/elements/checkbox-list/ttCheckboxList.css",
+				"scripts/global/elements/slider/ttSlider.css",
+				"scripts/global/elements/table/ttTable.css",
+				"scripts/global/elements/textbox/ttTextbox.css",
+				"scripts/global/elements/checkbox-duo/ttCheckboxDuo.css",
+				"scripts/features/align-left/ttAlignLeft.css",
+				"scripts/features/font-size/ttFontSize.css",
+				"scripts/features/block-zalgo/ttBlockZalgo.css",
+				"scripts/features/hide-chat/ttHideChat.css"
+			],
+			"js": [
+				"vendor/fontawesome/fontawesome.js",
+				"scripts/global/globalClasses.js",
+				"scripts/global/globalData.js",
+				"scripts/global/functions/browser.js",
+				"scripts/global/functions/containers.js",
+				"scripts/global/functions/dom.js",
+				"scripts/global/functions/database.js",
+				"scripts/global/functions/extension.js",
+				"scripts/global/functions/formatting.js",
+				"scripts/global/functions/listeners.js",
+				"scripts/global/functions/requires.js",
+				"scripts/global/functions/utilities.js",
+				"scripts/global/functions/torn.js",
+				"scripts/global/functions/api.js",
+				"scripts/global/functions/csv.js",
+				"scripts/global/featureManager.js",
+				"scripts/global/elements/checkbox/ttCheckbox.js",
+				"scripts/global/elements/checkbox-list/ttCheckboxList.js",
+				"scripts/global/elements/select/ttSelect.js",
+				"scripts/global/elements/slider/ttSlider.js",
+				"scripts/global/elements/table/ttTable.js",
+				"scripts/global/elements/table/ttTableRow.js",
+				"scripts/global/elements/table/ttTableCell.js",
+				"scripts/global/elements/table/ttHeaderCell.js",
+				"scripts/global/elements/textbox/ttTextbox.js",
+				"scripts/global/elements/checkbox-duo/ttCheckboxDuo.js",
+				"resource/images/svg-icons/cross.js",
+				"resource/images/svg-icons/back.js",
+				"resource/images/svg-icons/icon_128.js",
+				"scripts/content/global/ttGlobal.entry.js",
+				"scripts/features/align-left/ttAlignLeft.entry.js",
+				"scripts/features/font-size/ttFontSize.entry.js",
+				"scripts/features/block-zalgo/ttBlockZalgo.entry.js",
+				"scripts/features/hide-chat/ttHideChat.entry.js"
+			],
+			"run_at": "document_start"
+		},
+		{
+			"matches": ["https://www.torn.com/*.php*"],
+			"exclude_matches": ["https://www.torn.com/logout.php*"],
+			"css": [
+				"scripts/features/colored-chat/ttColoredChat.css",
+				"scripts/features/search-chat/ttSearchChat.css",
+				"scripts/features/easter-egg/ttEasterEgg.css",
+				"scripts/features/trade-timer/ttTradeTimer.css",
+				"scripts/features/revive-request/ttReviveRequest.css",
+				"scripts/features/user-alias/ttUserAlias.css",
+				"scripts/features/stacking-mode/ttStackingMode.css"
+			],
+			"js": [
+				"scripts/content/global/ttGlobal.js",
+				"scripts/features/colored-chat/ttColoredChat.js",
+				"scripts/features/search-chat/ttSearchChat.js",
+				"scripts/features/chat-highlight/ttChatHighlight.js",
+				"scripts/features/chat-autocomplete/ttChatAutocomplete.js",
+				"scripts/features/mini-profile-information/ttMiniprofileInformation.js",
+				"scripts/features/easter-egg/ttEasterEgg.js",
+				"scripts/features/trade-timer/ttTradeTimer.js",
+				"scripts/features/hide-chat/ttHideChat.js",
+				"scripts/features/revive-request/ttReviveRequest.js",
+				"scripts/features/user-alias/ttUserAlias.js",
+				"scripts/features/stacking-mode/ttStackingMode.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/*.php*"],
+			"exclude_matches": ["https://www.torn.com/logout.php*", "https://www.torn.com/loader.php?sid=attack&*"],
+			"css": [
+				"scripts/features/hide-leave/ttHideLeave.css",
+				"scripts/features/hide-level-upgrade/ttHideLevelUpgrade.css",
+				"scripts/features/highlight-energy-refill/ttHighlightEnergyRefill.css",
+				"scripts/features/highlight-nerve-refill/ttHighlightNerveRefill.css",
+				"scripts/features/hide-icons/ttHideIcons.css",
+				"scripts/features/achievements/ttAchievements.css",
+				"scripts/features/hide-tutorials/ttHideTutorials.css"
+			],
+			"js": [
+				"scripts/features/hide-leave/ttHideLeave.entry.js",
+				"scripts/features/hide-level-upgrade/ttHideLevelUpgrade.entry.js",
+				"scripts/features/highlight-energy-refill/ttHighlightEnergyRefill.entry.js",
+				"scripts/features/highlight-nerve-refill/ttHighlightNerveRefill.entry.js",
+				"scripts/features/hide-icons/ttHideIcons.entry.js",
+				"scripts/features/achievements/achievements.js",
+				"scripts/features/achievements/ttAchievements.entry.js",
+				"scripts/features/hide-tutorials/ttHideTutorials.entry.js"
+			],
+			"run_at": "document_start"
+		},
+		{
+			"matches": ["https://www.torn.com/*.php*"],
+			"exclude_matches": ["https://www.torn.com/logout.php*", "https://www.torn.com/loader.php?sid=attack&*"],
+			"css": [
+				"scripts/features/oc-time/ttOCTime.css",
+				"scripts/features/faction-oc-time/ttFactionOCTime.css",
+				"scripts/features/custom-links/ttCustomLinks.css",
+				"scripts/features/update-notice/ttUpdateNotice.css",
+				"scripts/features/sidebar-notes/ttSidebarNotes.css",
+				"scripts/features/computer-link/ttComputerLink.css",
+				"scripts/features/hide-gym-highlight/ttHideGymHighlight.css",
+				"scripts/features/highlight-properties/ttHighlightProperties.css",
+				"scripts/features/settings-link/ttSettingsLink.css",
+				"scripts/features/bar-links/ttBarLinks.css",
+				"scripts/features/collapsible-areas/ttCollapsibleAreas.css",
+				"scripts/features/npc-loot-times/ttNPCLootTimes.css"
+			],
+			"js": [
+				"scripts/features/hide-level-upgrade/ttHideLevelUpgrade.js",
+				"scripts/features/oc-time/ttOCTime.js",
+				"scripts/features/faction-oc-time/ttFactionOCTime.js",
+				"scripts/features/jobpoints-tooltip/ttJobPointsToolTip.js",
+				"scripts/features/company-addiction/ttCompanyAddiction.js",
+				"scripts/features/custom-links/ttCustomLinks.js",
+				"scripts/features/update-notice/ttUpdateNotice.js",
+				"scripts/features/sidebar-notes/ttSidebarNotes.js",
+				"scripts/features/computer-link/ttComputerLink.js",
+				"scripts/features/hide-gym-highlight/ttHideGymHighlight.js",
+				"scripts/features/highlight-properties/ttHighlightProperties.js",
+				"scripts/features/settings-link/ttSettingsLink.js",
+				"scripts/features/bar-links/ttBarLinks.js",
+				"scripts/features/collapsible-areas/ttCollapsibleAreas.js",
+				"scripts/features/points-value/ttPointsValue.js",
+				"scripts/features/npc-loot-times/ttNPCLootTimes.js",
+				"scripts/features/cooldown-end-times/ttCooldownEndTimes.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/api.html*"],
+			"js": [
+				"scripts/global/globalClasses.js",
+				"scripts/global/globalData.js",
+				"scripts/global/functions/dom.js",
+				"scripts/global/functions/database.js",
+				"scripts/global/functions/requires.js",
+				"scripts/global/functions/utilities.js",
+				"scripts/global/functions/api.js"
+			],
+			"run_at": "document_start"
+		},
+		{
+			"matches": ["https://www.torn.com/api.html*"],
+			"css": [
+				"scripts/global/globalVariables.css",
+				"scripts/features/api-selections/ttAPISelections.css",
+				"scripts/features/api-marking/ttAPIMarking.css"
+			],
+			"js": [
+				"scripts/features/api-demo/ttAPIDemo.js",
+				"scripts/features/auto-api-fill/ttAutoAPIFill.js",
+				"scripts/features/auto-pretty/ttAutoPretty.js",
+				"scripts/features/api-selections/ttAPISelections.js",
+				"scripts/features/api-marking/ttAPIMarking.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/bazaar.php*"],
+			"css": ["scripts/features/bazaar-worth/ttBazaarWorth.css"],
+			"js": ["scripts/features/bazaar-worth/ttBazaarWorth.entry.js"],
+			"run_at": "document_start"
+		},
+		{
+			"matches": ["https://www.torn.com/bazaar.php*"],
+			"css": [
+				"scripts/features/drug-details/ttDrugDetails.css",
+				"scripts/features/item-values/ttItemValues.css",
+				"scripts/features/total-item-cost/ttTotalItemCost.css",
+				"scripts/features/item-redirect/ttBazaarRedirect.css",
+				"scripts/features/bazaar-fill-max/ttBazaarFillMax.css"
+			],
+			"js": [
+				"scripts/features/drug-details/ttDrugDetails.js",
+				"scripts/features/item-values/ttItemValues.js",
+				"scripts/features/total-item-cost/ttTotalItemCost.js",
+				"scripts/features/item-redirect/ttBazaarRedirect.js",
+				"scripts/features/bazaar-fill-max/ttBazaarFillMax.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/bounties.php*"],
+			"css": ["scripts/features/bounty-filter/ttBountyFilter.css", "scripts/features/stats-estimate/ttStatsEstimate.css"],
+			"js": [
+				"scripts/global/functions/filters.js",
+				"scripts/content/bounties/ttBounties.js",
+				"scripts/features/bounty-filter/ttBountyFilter.js",
+				"scripts/features/stats-estimate/statsEstimate.js",
+				"scripts/features/stats-estimate/ttStatsEstimateBounties.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/casino.php*"],
+			"css": ["scripts/features/hide-casino-games/ttHideCasinoGames.css"],
+			"js": ["scripts/features/hide-casino-games/ttHideCasinoGames.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/companies.php*"],
+			"css": [
+				"scripts/features/company-specials/ttCompanySpecials.css",
+				"scripts/features/last-action/ttLastAction.css",
+				"scripts/features/employee-inactivity-warning/ttEmployeeInactivityWarning.css",
+				"scripts/features/employee-effectiveness/ttEmployeeEffectiveness.css",
+				"scripts/features/auto-stock-fill/ttAutoStockFill.css"
+			],
+			"js": [
+				"scripts/content/company/ttCompany.js",
+				"scripts/features/company-specials/ttCompanySpecials.js",
+				"scripts/features/last-action/ttCompanyLastAction.js",
+				"scripts/features/employee-inactivity-warning/ttEmployeeInactivityWarning.js",
+				"scripts/features/employee-effectiveness/ttEmployeeEffectiveness.js",
+				"scripts/features/auto-stock-fill/ttAutoStockFill.js",
+				"scripts/features/company-id/ttCompanyID.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/displaycase.php*"],
+			"css": [
+				"scripts/features/drug-details/ttDrugDetails.css",
+				"scripts/features/item-values/ttItemValues.css",
+				"scripts/features/display-case-worth/ttDisplayCaseWorth.css"
+			],
+			"js": [
+				"scripts/features/drug-details/ttDrugDetails.js",
+				"scripts/features/item-values/ttItemValues.js",
+				"scripts/features/display-case-worth/ttDisplayCaseWorth.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/page.php?sid=education*"],
+			"css": ["scripts/features/grey-completed-courses/ttGreyCompletedCourses.css"],
+			"js": ["scripts/features/grey-completed-courses/ttGreyCompletedCourses.js", "scripts/features/education-finish-time/ttEducationFinishTime.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/page.php?sid=events*"],
+			"css": [],
+			"js": ["scripts/features/event-worth/ttEventWorth.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/factions.php*"],
+			"css": [
+				"scripts/global/functions/filters.css",
+				"scripts/features/drug-details/ttDrugDetails.css",
+				"scripts/features/item-values/ttItemValues.css",
+				"scripts/features/highlight-blood-bags/ttHighlightBloodBags.css",
+				"scripts/features/highlight-own-oc/ttHighlightOwnOC.css",
+				"scripts/features/oc-available-players/ttOCAvailablePlayers.css",
+				"scripts/features/recommended-nnb/ttRecommendedNNB.css",
+				"scripts/features/oc-nnb/ttOCNNB.css",
+				"scripts/features/oc-last-action/ttOCLastAction.css",
+				"scripts/features/oc-times/ttOCTimes.css",
+				"scripts/features/full-faction-infobox/ttFullFactionInfobox.css",
+				"scripts/features/fold-faction-infobox/ttFoldFactionInfobox.css",
+				"scripts/features/csv-challenge-contributions/ttCSVChallengeContributions.css",
+				"scripts/features/faction-member-number/ttFactionMemberNumber.css",
+				"scripts/features/war-finish-times/ttWarFinishTimes.css",
+				"scripts/features/last-action/ttLastAction.css",
+				"scripts/features/faction-member-filter/ttFactionMemberFilter.css",
+				"scripts/features/faction-member-info/ttFactionMemberInfo.css",
+				"scripts/features/faction-inactivity-warning/ttFactionInactivityWarning.css",
+				"scripts/features/stats-estimate/ttStatsEstimate.css",
+				"scripts/features/abroad-energy-warning/ttAbroadEnergyWarning.css",
+				"scripts/features/energy-warning/ttEnergyWarning.css",
+				"scripts/features/armory-worth/ttArmoryWorth.css",
+				"scripts/features/ranked-war-filter/ttRankedWarFilter.css",
+				"scripts/features/medical-life/ttMedicalLife.css",
+				"scripts/features/faction-quick-items/ttFactionQuickItems.css",
+				"scripts/features/faction-stakeouts/ttFactionStakeouts.css"
+			],
+			"js": [
+				"scripts/global/functions/filters.js",
+				"scripts/global/functions/torn-items.js",
+				"scripts/content/factions/ttFactions.js",
+				"scripts/features/drug-details/ttDrugDetails.js",
+				"scripts/features/item-values/ttItemValues.js",
+				"scripts/features/highlight-blood-bags/ttHighlightBloodBags.js",
+				"scripts/features/open-oc/ttOpenOC.js",
+				"scripts/features/highlight-own-oc/ttHighlightOwnOC.js",
+				"scripts/features/oc-available-players/ttOCAvailablePlayers.js",
+				"scripts/features/recommended-nnb/ttRecommendedNNB.js",
+				"scripts/features/oc-nnb/ttOCNNB.js",
+				"scripts/features/oc-last-action/ttOCLastAction.js",
+				"scripts/features/oc-times/ttOCTimes.js",
+				"scripts/features/faction-banker/ttFactionBanker.js",
+				"scripts/features/full-faction-infobox/ttFullFactionInfobox.js",
+				"scripts/features/fold-faction-infobox/ttFoldFactionInfobox.js",
+				"scripts/features/csv-challenge-contributions/ttCSVChallengeContributions.js",
+				"scripts/features/faction-member-number/ttFactionMemberNumber.js",
+				"scripts/features/war-finish-times/ttWarFinishTimes.js",
+				"scripts/features/last-action/ttFactionLastAction.js",
+				"scripts/features/faction-member-filter/ttFactionMemberFilter.js",
+				"scripts/features/armory-filter/ttArmoryFilter.js",
+				"scripts/features/armory-worth/ttArmoryWorth.js",
+				"scripts/features/upgrade-required-respect/ttUpgradeRequiredRespect.js",
+				"scripts/features/faction-member-info/ttFactionMemberInfo.js",
+				"scripts/features/faction-inactivity-warning/ttFactionInactivityWarning.js",
+				"scripts/features/abroad-energy-warning/ttAbroadEnergyWarning.js",
+				"scripts/features/energy-warning/ttEnergyWarning.js",
+				"scripts/features/user-alias/ttUserAliasUserlist.js",
+				"scripts/features/ranked-war-filter/ttRankedWarFilter.js",
+				"scripts/features/stats-estimate/statsEstimate.js",
+				"scripts/features/stats-estimate/ttStatsEstimateFactionMembers.js",
+				"scripts/features/stats-estimate/ttStatsEstimateFactionWars.js",
+				"scripts/features/stats-estimate/ttStatsEstimateFactionRankedWars.js",
+				"scripts/features/medical-life/ttMedicalLife.js",
+				"scripts/features/faction-quick-items/ttFactionQuickItems.js",
+				"scripts/features/faction-stakeouts/ttFactionStakeouts.js",
+				"scripts/features/faction-id/ttFactionID.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/hospitalview.php*"],
+			"css": ["scripts/global/functions/filters.css"],
+			"js": [
+				"scripts/global/functions/filters.js",
+				"scripts/content/hospital/ttHospital.js",
+				"scripts/features/hospital-filter/ttHospitalFilter.js",
+				"scripts/features/user-alias/ttUserAliasUserlist.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/imarket.php*"],
+			"css": [
+				"scripts/features/drug-details/ttDrugDetails.css",
+				"scripts/features/no-confirm/ttItemMarketNoConfirm.css",
+				"scripts/features/highlight-cheap-items/ttHighlightCheapItems.css",
+				"scripts/features/compact-item-market/ttCompactItemMarket.css"
+			],
+			"js": [
+				"scripts/features/drug-details/ttDrugDetails.js",
+				"scripts/features/item-redirect/ttItemMarketRedirect.js",
+				"scripts/features/no-confirm/ttItemMarketNoConfirm.js",
+				"scripts/features/highlight-cheap-items/ttHighlightCheapItems.js",
+				"scripts/features/compact-item-market/ttCompactItemMarket.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/index.php*"],
+			"css": [
+				"scripts/global/functions/filters.css",
+				"scripts/features/effective-stats/ttEffectiveStats.css",
+				"scripts/features/live-networth/ttLiveNetworth.css",
+				"scripts/features/drug-details/ttDrugDetails.css",
+				"scripts/features/travel-table/ttTravelTable.css",
+				"scripts/features/travel-item-profits/ttTravelItemProfits.css",
+				"scripts/features/travel-fill-max/ttTravelFillMax.css",
+				"scripts/features/sort-travel-market/ttSortTravelMarket.css",
+				"scripts/features/landing-time/ttLandingTime.css",
+				"scripts/features/abroad-energy-warning/ttAbroadEnergyWarning.css"
+			],
+			"js": [
+				"scripts/global/functions/filters.js",
+				"scripts/features/effective-stats/ttEffectiveStats.js",
+				"scripts/features/live-networth/ttLiveNetworth.js",
+				"scripts/features/drug-details/ttDrugDetails.js",
+				"scripts/features/travel-table/ttTravelTable.js",
+				"scripts/features/travel-table/ttTravelSync.js",
+				"scripts/features/clean-flight/ttCleanFlight.js",
+				"scripts/features/travel-item-profits/ttTravelItemProfits.js",
+				"scripts/features/travel-fill-max/ttTravelFillMax.js",
+				"scripts/features/sort-travel-market/ttSortTravelMarket.js",
+				"scripts/features/landing-time/ttLandingTime.js",
+				"scripts/features/abroad-items-filter/ttAbroadItemsFilter.js",
+				"scripts/features/abroad-energy-warning/ttAbroadEnergyWarning.js",
+				"scripts/features/abroad-auto-fill-max/ttAbroadAutoFillMax.js",
+				"scripts/features/no-confirm/ttAbroadBuyNoConfirm.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/index.php?page=people*"],
+			"css": ["scripts/features/stats-estimate/ttStatsEstimate.css"],
+			"js": [
+				"scripts/features/abroad-people-filter/ttPeopleFilter.js",
+				"scripts/features/stats-estimate/statsEstimate.js",
+				"scripts/features/stats-estimate/ttStatsEstimateAbroad.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/item.php*"],
+			"css": [
+				"scripts/features/quick-items/ttQuickItems.css",
+				"scripts/features/market-icons/ttMarketIcons.css",
+				"scripts/features/drug-details/ttDrugDetails.css",
+				"scripts/features/item-values/ttItemValues.css",
+				"scripts/features/highlight-blood-bags/ttHighlightBloodBags.css",
+				"scripts/features/missing-sets/ttMissingSets.css",
+				"scripts/features/book-effect/ttBookEffect.css",
+				"scripts/features/can-energy/ttCanEnergy.css",
+				"scripts/features/alcohol-nerve/ttAlcoholNerve.css",
+				"scripts/features/candy-happy/ttCandyHappy.css",
+				"scripts/features/energy-warning/ttEnergyWarning.css",
+				"scripts/features/medical-life/ttMedicalLife.css"
+			],
+			"js": [
+				"vendor/drag-drop-touch/DragDropTouch.js",
+				"scripts/global/functions/torn-items.js",
+				"scripts/content/items/ttItems.js",
+				"scripts/features/quick-items/ttQuickItems.js",
+				"scripts/features/market-icons/ttMarketIcons.js",
+				"scripts/features/drug-details/ttDrugDetails.js",
+				"scripts/features/item-values/ttItemValues.js",
+				"scripts/features/highlight-blood-bags/ttHighlightBloodBags.js",
+				"scripts/features/missing-sets/ttMissingSets.js",
+				"scripts/features/book-effect/ttBookEffect.js",
+				"scripts/features/can-energy/ttCanEnergy.js",
+				"scripts/features/alcohol-nerve/ttAlcoholNerve.js",
+				"scripts/features/candy-happy/ttCandyHappy.js",
+				"scripts/features/no-confirm/ttItemNoConfirm.js",
+				"scripts/features/energy-warning/ttEnergyWarning.js",
+				"scripts/features/medical-life/ttMedicalLife.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/itemuseparcel.php*"],
+			"css": ["scripts/features/item-values/ttItemValues.css"],
+			"js": ["scripts/features/item-values/ttItemValues.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/jailview.php*"],
+			"css": ["scripts/global/functions/filters.css", "scripts/features/jail-filter/ttJailFilter.css"],
+			"js": [
+				"scripts/global/functions/filters.js",
+				"scripts/content/jail/ttJail.js",
+				"scripts/features/jail-filter/ttJailFilter.js",
+				"scripts/features/user-alias/ttUserAliasUserlist.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/joblist.php*"],
+			"css": [
+				"scripts/features/job-specials/ttJobSpecials.css",
+				"scripts/features/last-action/ttLastAction.css",
+				"scripts/features/employee-inactivity-warning/ttEmployeeInactivityWarning.css"
+			],
+			"js": [
+				"scripts/content/company/ttCompany.js",
+				"scripts/features/job-specials/ttJobSpecials.js",
+				"scripts/features/last-action/ttCompanyLastAction.js",
+				"scripts/features/employee-inactivity-warning/ttEmployeeInactivityWarning.js",
+				"scripts/features/company-id/ttCompanyID.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/loader.php?sid=attack&*"],
+			"css": ["scripts/features/disable-ally-attacks/ttDisableAllyAttacks.css"],
+			"js": ["scripts/features/disable-ally-attacks/ttDisableAllyAttacksLoader.entry.js", "scripts/features/hide-attack-buttons/ttHideAttackButtons.js"],
+			"run_at": "document_start"
+		},
+		{
+			"matches": ["https://www.torn.com/loader.php?sid=attack&*"],
+			"css": ["scripts/features/stats-estimate/ttStatsEstimate.css", "scripts/features/weapon-experience/ttWeaponExperience.css"],
+			"js": [
+				"scripts/features/attack-timeout-warning/ttAttackTimeoutWarning.js",
+				"scripts/features/stats-estimate/statsEstimate.js",
+				"scripts/features/stats-estimate/ttStatsEstimateAttacks.js",
+				"scripts/features/fair-attack/ttFairAttack.js",
+				"scripts/features/weapon-experience/ttWeaponExperience.js",
+				"scripts/features/page-title/ttPageTitleAttack.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": [
+				"https://www.torn.com/page.php?sid=slotsStats",
+				"https://www.torn.com/page.php?sid=highlowStats",
+				"https://www.torn.com/page.php?sid=rouletteStatistics",
+				"https://www.torn.com/page.php?sid=kenoStatistics",
+				"https://www.torn.com/page.php?sid=bookie*",
+				"https://www.torn.com/loader.php?sid=view*"
+			],
+			"css": ["scripts/features/casino-net-total/ttCasinoNetTotal.css"],
+			"js": ["scripts/features/casino-net-total/ttCasinoNetTotal.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/profiles.php*"],
+			"css": [
+				"scripts/features/profile-notes/ttProfileNotes.css",
+				"scripts/features/status-indicator/ttStatusIndicator.css",
+				"scripts/features/friendly-fire/ttFriendlyFire.css",
+				"scripts/features/age-to-words/ttAgeToWords.css",
+				"scripts/features/disable-ally-attacks/ttDisableAllyAttacks.css",
+				"scripts/features/profile-box/ttProfileBox.css",
+				"scripts/features/stats-estimate/ttStatsEstimate.css",
+				"scripts/features/creators/ttCreators.css"
+			],
+			"js": [
+				"vendor/sortable/sortable.js",
+				"scripts/global/team.js",
+				"scripts/features/profile-id/ttProfileID.js",
+				"scripts/features/profile-notes/ttProfileNotes.js",
+				"scripts/features/status-indicator/ttStatusIndicator.js",
+				"scripts/features/friendly-fire/ttFriendlyFire.js",
+				"scripts/features/age-to-words/ttAgeToWords.js",
+				"scripts/features/disable-ally-attacks/ttDisableAllyAttacks.js",
+				"scripts/features/profile-box/ttProfileBox.js",
+				"scripts/features/stats-estimate/statsEstimate.js",
+				"scripts/features/stats-estimate/ttStatsEstimateProfile.js",
+				"scripts/features/creators/ttCreators.js",
+				"scripts/features/user-alias/ttUserAliasProfile.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/properties.php*"],
+			"css": ["scripts/features/property-happiness/ttPropertyHappiness.css"],
+			"js": ["scripts/features/property-values/ttPropertyValues.js", "scripts/features/property-happiness/ttPropertyHappiness.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/loader.php?sid=racing*"],
+			"css": ["scripts/features/racing-upgrades/ttRacingUpgrades.css"],
+			"js": ["scripts/features/car-win-percentage/ttCarWinPercentage.js", "scripts/features/racing-upgrades/ttRacingUpgrades.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/page.php?sid=stocks*"],
+			"css": [
+				"scripts/global/functions/filters.css",
+				"scripts/features/stocks-filter/ttStocksFilter.css",
+				"scripts/features/stock-acronyms/ttStockAcronyms.css",
+				"scripts/features/total-portfolio-value/ttTotalPortfolioValue.css",
+				"scripts/features/hide-stocks/ttHideStocks.css"
+			],
+			"js": [
+				"scripts/global/functions/filters.js",
+				"scripts/features/stocks-filter/ttStocksFilter.js",
+				"scripts/features/stock-acronyms/ttStockAcronyms.js",
+				"scripts/features/total-portfolio-value/ttTotalPortfolioValue.js",
+				"scripts/features/hide-stocks/ttHideStocks.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/page.php?sid=UserList*"],
+			"css": ["scripts/global/functions/filters.css", "scripts/features/stats-estimate/ttStatsEstimate.css"],
+			"js": [
+				"scripts/global/functions/filters.js",
+				"scripts/content/userlist/ttUserlist.js",
+				"scripts/features/userlist-filter/ttUserlistFilter.js",
+				"scripts/features/stats-estimate/statsEstimate.js",
+				"scripts/features/stats-estimate/ttStatsEstimateUserlist.js",
+				"scripts/features/user-alias/ttUserAliasUserlist.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/shops.php*", "https://www.torn.com/bigalgunshop.php*"],
+			"css": [
+				"scripts/features/shops-fill-max/ttShopsFillMax.css",
+				"scripts/features/shop-profits/ttShopProfits.css",
+				"scripts/features/shop-filters/ttShopFilters.css"
+			],
+			"js": [
+				"scripts/features/shops-fill-max/ttShopsFillMax.js",
+				"scripts/features/shop-profits/ttShopProfits.js",
+				"scripts/features/shop-filters/ttShopFilters.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/trade.php*"],
+			"css": [
+				"scripts/features/item-values/ttItemValues.css",
+				"scripts/features/trade-values/ttTradeValues.css",
+				"scripts/features/trade-open-chat/ttTradeOpenChat.css"
+			],
+			"js": [
+				"scripts/content/trade/ttTrade.js",
+				"scripts/features/item-values/ttItemValues.js",
+				"scripts/features/trade-values/ttTradeValues.js",
+				"scripts/features/trade-open-chat/ttTradeOpenChat.js",
+				"scripts/features/no-confirm/ttTradeNoConfirm.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/travelagency.php*"],
+			"css": [
+				"scripts/features/travel-table/ttTravelTable.css",
+				"scripts/features/flying-time/ttFlyingTime.css",
+				"scripts/features/travel-cooldowns/ttTravelCooldowns.css"
+			],
+			"js": [
+				"scripts/content/travelagency/ttTravelAgency.js",
+				"scripts/features/travel-table/ttTravelTable.js",
+				"scripts/features/flying-time/ttFlyingTime.js",
+				"scripts/features/travel-cooldowns/ttTravelCooldowns.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/war.php?step=warreport*"],
+			"css": ["scripts/features/csv-war-report/ttCSVWarReport.css"],
+			"js": ["scripts/features/csv-war-report/ttCSVWarReport.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/war.php?step=rankreport*"],
+			"css": ["scripts/features/csv-ranked-war-report/ttCSVRankedWarReport.css"],
+			"js": ["scripts/features/csv-ranked-war-report/ttCSVRankedWarReport.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/war.php?step=raidreport*"],
+			"css": ["scripts/features/csv-raid-report/ttCSVRaidReport.css"],
+			"js": ["scripts/features/csv-raid-report/ttCSVRaidReport.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/war.php?step=chainreport*"],
+			"css": ["scripts/features/csv-chain-report/ttCSVChainReport.css"],
+			"js": ["scripts/features/csv-chain-report/ttCSVChainReport.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/forums.php*"],
+			"css": [
+				"scripts/features/forum-warning/ttForumWarning.css",
+				"scripts/features/forum-menu/ttForumMenu.css",
+				"scripts/features/add-debug-info/ttAddDebugInfo.css"
+			],
+			"js": [
+				"scripts/features/forum-warning/ttForumWarning.js",
+				"scripts/features/forum-menu/ttForumMenu.js",
+				"scripts/features/add-debug-info/ttAddDebugInfo.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/preferences.php*"],
+			"css": ["scripts/features/preference-settings/ttPreferenceSettings.css"],
+			"js": ["scripts/features/preference-settings/ttPreferenceSettings.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/bank.php*"],
+			"css": ["scripts/features/bank-investment-info/ttBankInvestmentInfo.css"],
+			"js": ["scripts/features/bank-investment-info/ttBankInvestmentInfo.js", "scripts/features/bank-investment-due-time/ttBankInvestmentDueTime.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/gym.php*"],
+			"css": [
+				"scripts/features/specialist-gyms/ttSpecialistGyms.css",
+				"scripts/features/gym-disable-stats/ttGymDisableStats.css",
+				"scripts/features/gym-graph/ttGymGraph.css",
+				"scripts/features/gym-steadfast/ttGymSteadfast.css",
+				"scripts/features/gym-progress/ttGymProgress.css"
+			],
+			"js": [
+				"vendor/chartjs/chart.min.js",
+				"scripts/content/gym/ttGym.js",
+				"scripts/features/specialist-gyms/ttSpecialistGyms.js",
+				"scripts/features/gym-disable-stats/ttGymDisableStats.js",
+				"scripts/features/gym-graph/ttGymGraph.js",
+				"scripts/features/gym-steadfast/ttGymSteadfast.js",
+				"scripts/features/gym-progress/ttGymProgress.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/crimes.php*"],
+			"css": ["scripts/features/quick-crimes/ttQuickCrimes.css"],
+			"js": ["vendor/drag-drop-touch/DragDropTouch.js", "scripts/content/crimes/ttCrimes.js", "scripts/features/quick-crimes/ttQuickCrimes.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/loader.php?sid=missions"],
+			"css": ["scripts/features/mission-hints/ttMissionHints.css", "scripts/features/mission-rewards/ttMissionRewards.css"],
+			"js": [
+				"scripts/content/missions/ttMissions.js",
+				"scripts/features/mission-hints/ttMissionHints.js",
+				"scripts/features/mission-rewards/ttMissionRewards.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/loader.php?sid=attackLog*"],
+			"css": ["scripts/features/weapon-bonus-information/ttWeaponBonusInformation.css"],
+			"js": ["scripts/features/weapon-bonus-information/ttWeaponBonusInformation.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/city.php*"],
+			"css": ["scripts/features/city-items/ttCityItems.css"],
+			"js": ["scripts/global/functions/torn-items.js", "scripts/features/city-items/ttCityItems.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/page.php?sid=blackjack*"],
+			"css": ["scripts/features/blackjack-strategy/ttBlackjackStrategy.css"],
+			"js": ["scripts/features/blackjack-strategy/ttBlackjackStrategy.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/page.php?sid=highlow*"],
+			"css": ["scripts/features/high-low-helper/ttHighLowHelper.css"],
+			"js": ["scripts/features/high-low-helper/ttHighLowHelper.js"],
+			"run_at": "document_end"
+		},
+		{ "matches": ["https://www.torn.com/museum.php*"], "js": ["scripts/features/museum-auto-fill/ttMuseumAutoFill.js"], "run_at": "document_end" },
+		{
+			"matches": ["https://www.torn.com/blacklist.php*"],
+			"css": ["scripts/global/functions/filters.css", "scripts/features/stats-estimate/ttStatsEstimate.css"],
+			"js": [
+				"scripts/global/functions/filters.js",
+				"scripts/features/stats-estimate/statsEstimate.js",
+				"scripts/features/stats-estimate/ttStatsEstimateEnemies.js",
+				"scripts/features/enemy-filter/ttEnemyFilter.js"
+			],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/halloffame.php*"],
+			"css": ["scripts/features/stats-estimate/ttStatsEstimate.css"],
+			"js": ["scripts/features/stats-estimate/statsEstimate.js", "scripts/features/stats-estimate/ttStatsEstimateHOF.js"],
+			"run_at": "document_end"
+		},
+		{
+			"matches": ["https://www.torn.com/competition.php*"],
+			"css": [
+				"scripts/global/functions/filters.css",
+				"scripts/features/competition-filter/ttCompetitionFilter.css",
+				"scripts/features/stats-estimate/ttStatsEstimate.css"
+			],
+			"js": [
+				"scripts/global/functions/filters.js",
+				"scripts/content/competition/ttCompetition.js",
+				"scripts/features/competition-filter/ttCompetitionFilter.js",
+				"scripts/features/stats-estimate/statsEstimate.js",
+				"scripts/features/stats-estimate/ttStatsEstimateCompetition.js"
+			],
+			"run_at": "document_end"
+		},
+		{ "matches": ["https://www.torn.com/pmarket.php*"], "js": ["scripts/features/no-confirm/ttPointsMarketNoConfirm.js"], "run_at": "document_end" },
+		{
+			"matches": ["https://www.torn.com/amarket.php*"],
+			"css": ["scripts/global/functions/filters.css"],
+			"js": [
+				"scripts/global/functions/filters.js",
+				"scripts/content/auction-house/ttAuctionHouse.js",
+				"scripts/features/auction-house-filter/ttAuctionHouseFilter.js"
+			],
+			"run_at": "document_end"
+		}
+	]
+}

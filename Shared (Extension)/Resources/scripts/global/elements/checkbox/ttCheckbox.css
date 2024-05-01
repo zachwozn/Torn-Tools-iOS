@@ -1,0 +1,21 @@
+.tt-checkbox-wrapper,
+.tt-checkbox-wrapper label {
+	display: inline-flex;
+	align-items: center;
+}
+
+.tt-checkbox-wrapper > * {
+	cursor: pointer;
+}
+
+.tt-checkbox-wrapper.reverse-label label {
+	flex-flow: row-reverse;
+}
+
+.tt-checkbox-wrapper:not(.reverse-label) input {
+	margin-right: 2px;
+}
+
+.tt-checkbox-wrapper.reverse-label input {
+	margin-left: 2px;
+}

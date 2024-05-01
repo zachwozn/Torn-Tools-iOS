@@ -1,0 +1,10 @@
+{
+    "extension_name": {
+        "message": "Torn Tools",
+        "description": "Torn Tools for iOS"
+    },
+    "extension_description": {
+        "message": "Serveral Tools for Torn",
+        "description": "Description of what the extension does."
+    }
+}

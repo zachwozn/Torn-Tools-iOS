@@ -28,7 +28,7 @@
 		event.preventDefault();
 		event.stopImmediatePropagation();
 		if (confirm("Are you sure you want to attack this ally?")) {
-			location = document.querySelector(".profile-buttons .profile-button-attack").href;
+			location = document.find(".profile-buttons .profile-button-attack").href;
 		}
 	}
 
@@ -46,18 +46,23 @@
 				else return ally.trim() === factionName;
 			})
 		) {
-			const attackButton = document.querySelector(".profile-buttons .profile-button-attack");
+			const attackButton = document.find(".profile-buttons .profile-button-attack");
 			if (attackButton.classList.contains("cross")) return;
+            const img = document.createElement("img")
+            img.src = browser.runtime.getURL("resource/images/svg-icons/cross.svg");
 
+            img.classList.add("tt-disable-ally");
+            img.style = "width: 35px; height: 40px; transform: translate(-7%, -100%); position: absolute; padding: 7px;";
+            img.title = "Blocked by Torn Tools";
+            attackButton.appendChild(img);
 			const crossSvgNode = crossSvg();
 			crossSvgNode.classList.add("tt-disable-ally");
 			attackButton.insertAdjacentElement("beforeend", crossSvgNode);
 			crossSvgNode.addEventListener("click", listenerFunction, { capture: true });
-            
 		}
 	}
 
 	function enableButton() {
-		document.querySelectorAll("#profileroot .tt-disable-ally.tt-cross").forEach((x) => x.remove());
+		document.findAll("#profileroot .tt-disable-ally.tt-cross").forEach((x) => x.remove());
 	}
 })();

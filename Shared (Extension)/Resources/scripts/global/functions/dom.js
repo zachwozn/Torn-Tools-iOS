@@ -3,7 +3,7 @@
 const rotatingElements = {};
 let mobile;
 let tablet;
-
+console.log("dom.js is running!")
 Object.defineProperty(Document.prototype, "newElement", {
 	value(options = {}) {
 		if (typeof options === "string") {

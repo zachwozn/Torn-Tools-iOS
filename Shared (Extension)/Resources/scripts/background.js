@@ -1963,3 +1963,7 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   console.log('Service worker activating...');
 });
+
+self.addEventListener('error', (event) => {
+    console.error('Stack trace:', event.error.stack);
+});

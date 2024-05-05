@@ -1955,5 +1955,11 @@ function createNotification(title, options) {
     }
 }
 
-// Usage
-createNotification("Example Notification", { body: "Hello, this is a test notification", url: "https://example.com" });
+self.addEventListener('install', event => {
+  console.log('Service worker installing...');
+
+});
+
+self.addEventListener('activate', event => {
+  console.log('Service worker activating...');
+});

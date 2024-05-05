@@ -511,9 +511,9 @@ async function setupPreferences(requireCleanup) {
 			return;
 		}
 
-		chrome.permissions.request({ origins: [origin] }, (granted) => {
+		chrome.permissions.request({ origins: [origin + "*"] }, (granted) => {
 			if (!granted) {
-				sendMessage("Can't select this provider without accepting the permission.", false);
+				alert("Can't select this provider without accepting the permission.", false);
 				event.target.value = settings.pages.global.reviveProvider;
 			}
 		});
@@ -1137,9 +1137,9 @@ async function setupPreferences(requireCleanup) {
 			return;
 		}
 
-		chrome.permissions.request({ origins: [origin] }, (granted) => {
+		chrome.permissions.request({ origins: [origin + "*"] }, (granted) => {
 			if (!granted) {
-				sendMessage("Can't enable this without accepting the permission.", false);
+				alert("Can't enable this without accepting the permission.", false);
 				event.target.checked = false;
 			}
 		});
@@ -1625,7 +1625,7 @@ async function setupExport() {
 				const data = JSON.stringify(await getExportData(exportApi));
 
 				toClipboard(data);
-				sendMessage("Copied database to your clipboard.", true);
+				alert("Copied database to your clipboard.", true);
 			})
 			.catch(() => {});
 	});
@@ -1633,7 +1633,7 @@ async function setupExport() {
 		loadConfirmationPopup(POPUP_TEMPLATES.IMPORT_MANUAL)
 			.then(async ({ importtext }) => {
 				if (importtext > 5242880) {
-					sendMessage("Maximum size exceeded. (5MB)", false);
+					alert("Maximum size exceeded. (5MB)", false);
 					return;
 				}
 
@@ -1643,7 +1643,7 @@ async function setupExport() {
 					data = JSON.parse(importtext);
 				} catch (error) {
 					console.error("Couldn't read the file!", error);
-					sendMessage("Couldn't read the file!", false);
+					alert("Couldn't read the file!", false);
 					return;
 				}
 
@@ -1683,7 +1683,7 @@ async function setupExport() {
 		const reader = new FileReader();
 		reader.addEventListener("load", async (event) => {
 			if (event.target.result.length > 5242880) {
-				sendMessage("Maximum file size exceeded. (5MB)", false);
+				alert("Maximum file size exceeded. (5MB)", false);
 				return;
 			}
 
@@ -1693,7 +1693,7 @@ async function setupExport() {
 				data = JSON.parse(event.target.result);
 			} catch (error) {
 				console.error("Couldn't read the file!", error);
-				sendMessage("Couldn't read the file!", false);
+				alert("Couldn't read the file!", false);
 				return;
 			}
 
@@ -1909,3 +1909,4 @@ function formatBytes(bytes, options = {}) {
 
 	return `${formatNumber(xBytes, { decimals: options.decimals })} ${units[effectiveUnit]}`;
 }
+

@@ -25,7 +25,8 @@
 			"scripts/global/functions/api.js",
 			"scripts/global/functions/torn.js",
 			"scripts/background.js"
-		]
+		],
+        "persistent": false
 	},
 	"permissions": ["scripting", "storage", "notifications", "background", "tabs", "offscreen", "alarms", "fileBrowserHandler", "clipboardWrite"],
     "optional_permissions": [

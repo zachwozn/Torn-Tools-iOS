@@ -27,7 +27,7 @@
 			"scripts/background.js"
 		]
 	},
-	"permissions": ["scripting", "storage", "notifications", "background", "activeTab", "offscreen", "alarms", "fileBrowserHandler", "clipboardWrite"],
+	"permissions": ["scripting", "storage", "notifications", "background", "tabs", "offscreen", "alarms", "fileBrowserHandler", "clipboardWrite"],
     "optional_permissions": [
         "unlimitedStorage", "<all_urls>"
       ],
@@ -540,32 +540,12 @@
 			"run_at": "document_end"
 		},
 		{
-			"matches": ["https://www.torn.com/loader.php?sid=attack&*"],
-			"css": ["scripts/features/disable-ally-attacks/ttDisableAllyAttacks.css"],
-			"js": ["scripts/features/disable-ally-attacks/ttDisableAllyAttacksLoader.entry.js", "scripts/features/hide-attack-buttons/ttHideAttackButtons.js"],
-			"run_at": "document_start"
-		},
-		{
-			"matches": ["https://www.torn.com/loader.php?sid=attack&*"],
-			"css": ["scripts/features/stats-estimate/ttStatsEstimate.css", "scripts/features/weapon-experience/ttWeaponExperience.css"],
-			"js": [
-				"scripts/features/attack-timeout-warning/ttAttackTimeoutWarning.js",
-				"scripts/features/stats-estimate/statsEstimate.js",
-				"scripts/features/stats-estimate/ttStatsEstimateAttacks.js",
-				"scripts/features/fair-attack/ttFairAttack.js",
-				"scripts/features/weapon-experience/ttWeaponExperience.js",
-				"scripts/features/page-title/ttPageTitleAttack.js"
-			],
-			"run_at": "document_end"
-		},
-		{
 			"matches": [
 				"https://www.torn.com/page.php?sid=slotsStats",
 				"https://www.torn.com/page.php?sid=highlowStats",
 				"https://www.torn.com/page.php?sid=rouletteStatistics",
 				"https://www.torn.com/page.php?sid=kenoStatistics",
-				"https://www.torn.com/page.php?sid=bookie*",
-				"https://www.torn.com/loader.php?sid=view*"
+				"https://www.torn.com/page.php?sid=bookie*"
 			],
 			"css": ["scripts/features/casino-net-total/ttCasinoNetTotal.css"],
 			"js": ["scripts/features/casino-net-total/ttCasinoNetTotal.js"],
@@ -604,12 +584,6 @@
 			"matches": ["https://www.torn.com/properties.php*"],
 			"css": ["scripts/features/property-happiness/ttPropertyHappiness.css"],
 			"js": ["scripts/features/property-values/ttPropertyValues.js", "scripts/features/property-happiness/ttPropertyHappiness.js"],
-			"run_at": "document_end"
-		},
-		{
-			"matches": ["https://www.torn.com/loader.php?sid=racing*"],
-			"css": ["scripts/features/racing-upgrades/ttRacingUpgrades.css"],
-			"js": ["scripts/features/car-win-percentage/ttCarWinPercentage.js", "scripts/features/racing-upgrades/ttRacingUpgrades.js"],
 			"run_at": "document_end"
 		},
 		{
@@ -765,20 +739,9 @@
 			"run_at": "document_end"
 		},
 		{
-			"matches": ["https://www.torn.com/loader.php?sid=missions"],
-			"css": ["scripts/features/mission-hints/ttMissionHints.css", "scripts/features/mission-rewards/ttMissionRewards.css"],
-			"js": [
-				"scripts/content/missions/ttMissions.js",
-				"scripts/features/mission-hints/ttMissionHints.js",
-				"scripts/features/mission-rewards/ttMissionRewards.js"
-			],
-			"run_at": "document_end"
-		},
-		{
-			"matches": ["https://www.torn.com/loader.php?sid=attackLog*"],
-			"css": ["scripts/features/weapon-bonus-information/ttWeaponBonusInformation.css"],
-			"js": ["scripts/features/weapon-bonus-information/ttWeaponBonusInformation.js"],
-			"run_at": "document_end"
+			"matches": ["https://www.torn.com/loader.php*"],
+			"js": ["scripts/global/loaderManager.js"],
+			"run_at": "document_start"
 		},
 		{
 			"matches": ["https://www.torn.com/city.php*"],

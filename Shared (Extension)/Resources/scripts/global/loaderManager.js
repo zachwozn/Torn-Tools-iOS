@@ -49,20 +49,19 @@ const scripts = [
 			"run_at": "document_end"
 		}];
 
+while (typeof featureManager === "undefined") {};
 console.log("[TornTools] LoaderManager is running.");
-chrome.tabs.getCurrent().then((tabInfo) => {
-	for (const scriptInfo of scripts) {
-		const requiredURL = scriptInfo.matches[0].replace("*", "");
+for (const scriptInfo of scripts) {
+    const requiredURL = scriptInfo.matches[0].replace("*", "");
 
-		if (window.location.href.beginsWith(requiredURL)) {
-			console.log(`[TornTools] LoaderManager - Inserted ${scriptInfo.js} files.`);
+    if (window.location.href.beginsWith(requiredURL)) {
+        console.log(`[TornTools] LoaderManager - Inserted ${scriptInfo.js} files.`);
+        chrome.runtime.sendMessage({
+            action: "injectScripts",
+            cssFiles: scriptInfo.css,
+            jsFiles: scriptInfo.js,
+            jsInjectImmediately: scriptInfo.run_at === "document_start"
+        });
 
-			chrome.scripting.insertCSS({ files: scriptInfo.css });
-			chrome.scripting.executeScript({
-				files: scriptInfo.js,
-				injectImmediately: scriptInfo.run_at === "document_start"
-				target: { tabId: tabInfo.id }
-			});
-		}
-	}
-});
+    }
+}

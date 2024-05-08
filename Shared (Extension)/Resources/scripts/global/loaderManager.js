@@ -49,12 +49,15 @@ const scripts = [
 			"run_at": "document_end"
 		}];
 
+console.log("[TornTools] LoaderManager is running.");
 chrome.tabs.getCurrent().then((tabInfo) => {
 	for (const scriptInfo of scripts) {
 		const requiredURL = scriptInfo.matches[0].replace("*", "");
-		if (window.location.href.beginsWith(requiredURL)) {
-			chrome.scripting.insertCSS({ files: scriptInfo.css });
 
+		if (window.location.href.beginsWith(requiredURL)) {
+			console.log(`[TornTools] LoaderManager - Inserted ${scriptInfo.js} files.`);
+
+			chrome.scripting.insertCSS({ files: scriptInfo.css });
 			chrome.scripting.executeScript({
 				files: scriptInfo.js,
 				injectImmediately: scriptInfo.run_at === "document_start"

@@ -1878,6 +1878,18 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
 				.then((result) => sendResponse(result))
 				.catch((error) => sendResponse(error));
 			return true;
+		case "injectScripts":
+			chrome.scripting.insertCSS({
+				files: message.cssFiles,
+				target: { tabId: sender.tab.id }
+			});
+			chrome.scripting.executeScript({
+				files: message.jsFiles,
+				injectImmediately: message.jsInjectImmediately,
+				target: { tabId: sender.tab.id }
+			});
+
+			return true;
 		default:
 			sendResponse({ success: false, message: "Unknown action." });
 			break;

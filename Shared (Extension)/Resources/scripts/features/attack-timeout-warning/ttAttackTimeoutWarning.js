@@ -48,7 +48,7 @@
 			}
 		});
 
-		const audio = new Audio(browser.runtime.getURL(soundSource));
+		const audio = new Audio(chrome.runtime.getURL(soundSource));
 		audio.volume = settings.notifications.volume / 100;
 
 		observer = new MutationObserver((mutations) => {
@@ -63,7 +63,7 @@
 
 			if (seconds <= 0) return;
 			else if (seconds === 29 && settings.notifications.types.global) {
-                browser.runtime.sendMessage(
+                chrome.runtime.sendMessage(
 					{ action: "notification", title: "Attack Timeout", message: `Your attack is about to timeout in ${seconds} seconds!`, url: location.href },
 					(response) => {
 						if (response.error) return reject(response);

@@ -61,7 +61,7 @@
 			type: "script",
 			attributes: {
 				type: "text/javascript",
-				src: browser.runtime.getURL("scripts/features/points-value/ttPointsValue.inject.js"),
+				src: chrome.runtime.getURL("scripts/features/points-value/ttPointsValue.inject.js"),
 			},
 		});
 		document.head.appendChild(scriptEl);

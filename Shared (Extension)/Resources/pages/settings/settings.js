@@ -50,7 +50,7 @@ async function showPage(name) {
 }
 
 async function setupChangelog() {
-	const changelog = await (await fetch(browser.runtime.getURL("changelog.json"))).json();
+	const changelog = await (await fetch(chrome.runtime.getURL("changelog.json"))).json();
 	const content = document.find("#changelog > section");
 
 	changelog.forEach((entry, index, allEntries) => {
@@ -268,7 +268,7 @@ async function setupPreferences(requireCleanup) {
 			.then(async () => {
 				await ttStorage.reset();
 
-                browser.runtime.sendMessage({ action: "initialize" }, () => {
+                chrome.runtime.sendMessage({ action: "initialize" }, () => {
 					sendMessage("Settings reset.", true, { reload: true });
 				});
 			})
@@ -305,14 +305,14 @@ async function setupPreferences(requireCleanup) {
 		}
 	});
 	_preferences.find("#notification-sound-play").addEventListener("click", () => {
-        browser.runtime.sendMessage({
+        chrome.runtime.sendMessage({
 			action: "play-notification-sound",
 			sound: _preferences.find("#notification-sound").value,
 			volume: parseInt(_preferences.find("#notification-volume").value),
 		});
 	});
 	_preferences.find("#notification-sound-stop").addEventListener("click", () => {
-        browser.runtime.sendMessage({ action: "stop-notification-sound" });
+        chrome.runtime.sendMessage({ action: "stop-notification-sound" });
 	});
 	_preferences.find("#notification-sound-upload").addEventListener("change", (event) => {
 		if (!event.target.files.length) return;
@@ -1367,7 +1367,7 @@ async function setupAPIInfo() {
 			});
 	});
 
-	document.find(".current-usage .yata .icon").innerHTML = await (await fetch(browser.runtime.getURL("resource/images/svg-icons/yata.svg"))).text();
+	document.find(".current-usage .yata .icon").innerHTML = await (await fetch(chrome.runtime.getURL("resource/images/svg-icons/yata.svg"))).text();
 
 	const apiUsageLocations = ["torn", "tornstats", "yata"];
 	const perMinuteUsage = {

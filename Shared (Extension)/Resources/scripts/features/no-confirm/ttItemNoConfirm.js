@@ -9,7 +9,7 @@
 		document.head.appendChild(
 			document.newElement({
 				type: "script",
-				attributes: { type: "text/javascript", src: browser.runtime.getURL("/scripts/features/no-confirm/ttItemNoConfirm.inject.js") },
+				attributes: { type: "text/javascript", src: chrome.runtime.getURL("/scripts/features/no-confirm/ttItemNoConfirm.inject.js") },
 			})
 		);
 	}

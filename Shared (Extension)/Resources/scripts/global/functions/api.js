@@ -50,7 +50,7 @@ async function fetchData(location, options = {}) {
 
 	return new Promise(async (resolve, reject) => {
 		if (options.relay && SCRIPT_TYPE !== "BACKGROUND") {
-            browser.runtime.sendMessage({ action: "fetchRelay", location, options: { ...options, relay: false } }, (response) => {
+            chrome.runtime.sendMessage({ action: "fetchRelay", location, options: { ...options, relay: false } }, (response) => {
 				if (response.error) return reject(response);
 				else return resolve(response);
 			});
@@ -325,7 +325,7 @@ function changeAPIKey(key) {
 			.then(async () => {
 				await ttStorage.change({ api: { torn: { key } } });
 
-				browser.runtime.sendMessage({ action: "initialize" }, async () => {
+				chrome.runtime.sendMessage({ action: "initialize" }, async () => {
 					resolve();
 				});
 			})
@@ -350,5 +350,5 @@ function hasFactionAPIAccess() {
 }
 
 async function hasOrigins(...origins) {
-	return new Promise((resolve) => browser.permissions.contains({ origins }, (granted) => resolve(granted)));
+	return new Promise((resolve) => chrome.permissions.contains({ origins }, (granted) => resolve(granted)));
 }

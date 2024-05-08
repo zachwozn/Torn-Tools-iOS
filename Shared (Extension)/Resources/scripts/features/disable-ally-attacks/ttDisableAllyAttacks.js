@@ -49,7 +49,7 @@
 			const attackButton = document.find(".profile-buttons .profile-button-attack");
 			if (attackButton.classList.contains("cross")) return;
             const img = document.createElement("img")
-            img.src = browser.runtime.getURL("resource/images/svg-icons/cross.svg");
+            img.src = chrome.runtime.getURL("resource/images/svg-icons/cross.svg");
 
             img.classList.add("tt-disable-ally");
             img.style = "width: 35px; height: 40px; transform: translate(-7%, -100%); position: absolute; padding: 7px;";

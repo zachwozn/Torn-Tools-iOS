@@ -25,7 +25,7 @@
 
 		const data = {
 			client: "TornTools",
-			version: browser.runtime.getManifest().version,
+			version: chrome.runtime.getManifest().version,
 			author_name: "Mephiles",
 			author_id: 2087524,
 			country: getCountryName(),

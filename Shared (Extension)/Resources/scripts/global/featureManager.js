@@ -374,13 +374,13 @@ class FeatureManager {
 
         const buttonContainer = document.createElement('div');
         const button = document.createElement('button');
-        button.style.backgroundImage = `url(${browser.runtime.getURL("resource/images/icon_128.png")})`;
+        button.style.backgroundImage = `url(${chrome.runtime.getURL("resource/images/icon_128.png")})`;
         button.addEventListener('click', (e) => {
             const title = e.target.closest(`#${this.containerID}`);
             if (title.classList.toggle('open'))
-                button.style.backgroundImage = `url(${browser.runtime.getURL("resource/images/svg-icons/cross.svg")})`;
+                button.style.backgroundImage = `url(${chrome.runtime.getURL("resource/images/svg-icons/cross.svg")})`;
             else
-                button.style.backgroundImage = `url(${browser.runtime.getURL("resource/images/icon_128.png")})`;
+                button.style.backgroundImage = `url(${chrome.runtime.getURL("resource/images/icon_128.png")})`;
         });
         buttonContainer.appendChild(button);
 

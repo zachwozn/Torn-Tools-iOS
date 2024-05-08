@@ -52,7 +52,7 @@
 				type: "iframe",
 				id: "tt-settings-iframe",
 				attributes: {
-					src: browser.runtime.getURL("pages/settings/settings.html"),
+					src: chrome.runtime.getURL("pages/settings/settings.html"),
 				},
 			});
 			if (!addedMessageListener) {

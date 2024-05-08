@@ -11,7 +11,7 @@ const ttStorage = new (class {
         return new Promise((resolve, reject) => {
             const storage = typeof browser !== 'undefined' ? browser.storage.local : chrome.storage.local;
             storage.get(key, (data) => {
-                const error = typeof browser !== 'undefined' ? browser.runtime.lastError : chrome.runtime.lastError;
+                const error = typeof browser !== 'undefined' ? chrome.runtime.lastError : chrome.runtime.lastError;
                 if (error) {
                     console.error("Failed to retrieve from storage:", error);
                     reject(error);
@@ -31,7 +31,7 @@ const ttStorage = new (class {
         return new Promise((resolve, reject) => {
             const storage = typeof browser !== 'undefined' ? browser.storage.local : chrome.storage.local;
             storage.set(object, () => {
-                const error = typeof browser !== 'undefined' ? browser.runtime.lastError : chrome.runtime.lastError;
+                const error = typeof browser !== 'undefined' ? chrome.runtime.lastError : chrome.runtime.lastError;
                 if (error) {
                     console.error("Failed to save to storage:", error);
                     reject(error);
@@ -47,7 +47,7 @@ const ttStorage = new (class {
         return new Promise((resolve, reject) => {
             const storage = typeof browser !== 'undefined' ? browser.storage.local : chrome.storage.local;
             storage.remove(Array.isArray(key) ? key : [key], () => {
-                const error = typeof browser !== 'undefined' ? browser.runtime.lastError : chrome.runtime.lastError;
+                const error = typeof browser !== 'undefined' ? chrome.runtime.lastError : chrome.runtime.lastError;
                 if (error) {
                     console.error("Failed to remove from storage:", error);
                     reject(error);
@@ -62,7 +62,7 @@ const ttStorage = new (class {
         return new Promise((resolve, reject) => {
             const storage = typeof browser !== 'undefined' ? browser.storage.local : chrome.storage.local;
             storage.clear(() => {
-                const error = typeof browser !== 'undefined' ? browser.runtime.lastError : chrome.runtime.lastError;
+                const error = typeof browser !== 'undefined' ? chrome.runtime.lastError : chrome.runtime.lastError;
                 if (error) {
                     console.error("Failed to clear storage:", error);
                     reject(error);

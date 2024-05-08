@@ -110,7 +110,7 @@
 			else if (country === "uae") country = "UAE";
 			else country = capitalizeText(country.replaceAll("-", " "), { everyWord: true });
 
-			const source = `TornTools v${browser.runtime.getManifest().version}`;
+			const source = `TornTools v${chrome.runtime.getManifest().version}`;
 
 			if (provider === "nuke") {
 				const response = await fetchData("nukefamily", {

@@ -17,7 +17,7 @@
 					type: "a",
 					class: "preference-button",
 					text: "Settings",
-					href: browser.runtime.getURL("pages/settings/settings.html"),
+					href: chrome.runtime.getURL("pages/settings/settings.html"),
 					attributes: { target: "_blank" },
 				})
 			);

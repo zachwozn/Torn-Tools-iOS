@@ -52,16 +52,16 @@ const scripts = [
 while (typeof featureManager === "undefined") {};
 console.log("[TornTools] LoaderManager is running.");
 for (const scriptInfo of scripts) {
-    const requiredURL = scriptInfo.matches[0].replace("*", "");
+	const requiredURL = scriptInfo.matches[0].replace("*", "");
 
-    if (window.location.href.beginsWith(requiredURL)) {
-        console.log(`[TornTools] LoaderManager - Inserted ${scriptInfo.js} files.`);
-        chrome.runtime.sendMessage({
-            action: "injectScripts",
-            cssFiles: scriptInfo.css,
-            jsFiles: scriptInfo.js,
-            jsInjectImmediately: scriptInfo.run_at === "document_start"
-        });
+	if (window.location.href.beginsWith(requiredURL)) {
+		console.log(`[TornTools] LoaderManager - Inserted ${scriptInfo.js} files.`);
+		chrome.runtime.sendMessage({
+			action: "injectScripts",
+			cssFiles: scriptInfo.css,
+			jsFiles: scriptInfo.js,
+			jsInjectImmediately: scriptInfo.run_at === "document_start"
+		});
 
-    }
+	}
 }

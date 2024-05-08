@@ -1,6 +1,6 @@
 "use strict";
 
-console.info("Loading background script...")
+console.info("Loading background script...");
 if (typeof importScripts !== "undefined")
 	importScripts(
 		...[
@@ -31,9 +31,9 @@ const notificationPlayer = {
 
 		if (!this.src) throw Error("No sound src set.");
 
-		await browser.runtime.sendMessage({
+		await chrome.runtime.sendMessage({
 			offscreen: true,
-			src: browser.runtime.getURL(this.src),
+			src: chrome.runtime.getURL(this.src),
 			volume: this.volume,
 		});
 	},
@@ -47,9 +47,9 @@ const notificationTestPlayer = {
 
 		if (!this.src) throw Error("No sound src set.");
 
-		await browser.runtime.sendMessage({
+		await chrome.runtime.sendMessage({
 			offscreen: true,
-			src: browser.runtime.getURL(this.src),
+			src: chrome.runtime.getURL(this.src),
 			volume: this.volume,
 		});
 	},
@@ -78,6 +78,35 @@ let notifications = {
 };
 let settingsListeners = [];
 let npcUpdater;
+
+// On browser update, extension update or extension (re)install
+chrome.runtime.onInstalled.addListener(async () => {
+    await convertDatabase();
+    await loadDatabase();
+
+    await checkUpdate();
+
+    await chrome.alarms.clearAll();
+    await chrome.alarms.create(ALARM_NAMES.NOTIFICATIONS, { periodInMinutes: 0.52 });
+    await chrome.alarms.create(ALARM_NAMES.CLEAR_CACHE, { periodInMinutes: 60 });
+    await chrome.alarms.create(ALARM_NAMES.CLEAR_USAGE, { periodInMinutes: 60 * 24 });
+    await chrome.alarms.create(ALARM_NAMES.DATA_UPDATE, { periodInMinutes: 0.52 });
+
+    notificationHistory = await ttStorage.get("notificationHistory");
+    notifications = await ttStorage.get("notifications");
+
+    // These are refresh tasks, not clearing.
+    clearUsage();
+    clearCache();
+
+    // Initial call
+    timedUpdates();
+
+    await showIconBars();
+    storageListeners.settings.push(async () => {
+        await showIconBars();
+    });
+});
 
 async function setupExtension() {
     // Simulate tasks that would be performed on installation or update
@@ -113,7 +142,7 @@ async function setupExtension() {
 setupExtension();
 
 // When SW (re)starts
-browser.runtime.onStartup.addListener(async () => {
+chrome.runtime.onStartup.addListener(async () => {
 	await loadDatabase();
 
 	notificationHistory = await ttStorage.get("notificationHistory");
@@ -145,22 +174,28 @@ browser.runtime.onStartup.addListener(async () => {
 // })();
 
 // On alarm triggered
-function setupAlarms() {
-    console.log("Setting up alarms")
-    setInterval(async () => {
-        await loadDatabase();
-        notificationHistory = await ttStorage.get("notificationHistory");
-        notifications = await ttStorage.get("notifications");
+chrome.alarms.onAlarm.addListener(async (alarm) => {
+    await loadDatabase();
+    notificationHistory = await ttStorage.get("notificationHistory");
+    notifications = await ttStorage.get("notifications");
 
-        sendNotifications();
-    }, 10000); // Set as required, e.g., 10 seconds for demonstration
-
-    setInterval(clearCache, 30000); // Every 30 seconds
-    setInterval(clearUsage, 60000); // Every 60 seconds
-    setInterval(timedUpdates, 30000); // Every 30 seconds
-}
-
-setupAlarms();
+    switch (alarm.name) {
+        case ALARM_NAMES.NOTIFICATIONS:
+            sendNotifications();
+            break;
+        case ALARM_NAMES.CLEAR_CACHE:
+            clearCache();
+            break;
+        case ALARM_NAMES.CLEAR_USAGE:
+            clearUsage();
+            break;
+        case ALARM_NAMES.DATA_UPDATE:
+            timedUpdates();
+            break;
+        default:
+            throw new Error("Undefined alarm name: " + alarm.name);
+    }
+});
 
 async function convertDatabase() {
 	const storage = await ttStorage.get();
@@ -1835,7 +1870,8 @@ async function notifyUser(title, message, url) {
 
 // chrome.runtime.onConnect.addListener(() => {});
 
-browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    console.log(message, sender);
 	switch (message.action) {
 		case "initialize":
 			timedUpdates();
@@ -1878,16 +1914,29 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
 				.then((result) => sendResponse(result))
 				.catch((error) => sendResponse(error));
 			return true;
+        case "injectScripts":
+            console.log("Loading Scipts", message.jsFiles);
+            chrome.scripting.insertCSS({
+                files: message.cssFiles,
+                target: { tabId: sender.tab.id }
+            });
+            chrome.scripting.executeScript({
+                files: message.jsFiles,
+                injectImmediately: message.jsInjectImmediately,
+                target: { tabId: sender.tab.id }
+            });
+
+            return true;
 		default:
 			sendResponse({ success: false, message: "Unknown action." });
 			break;
 	}
 });
 
-/* browser.notifications.onClicked.addListener(notificationId => {
+/* chrome.notifications.onClicked.addListener(notificationId => {
     if (notificationRelations.hasOwnProperty(notificationId)) {
         // Create a new tab with the URL associated with the notification
-        browser.tabs.create({ url: notificationRelations[notificationId] });
+        chrome.tabs.create({ url: notificationRelations[notificationId] });
     }
 }); */
 

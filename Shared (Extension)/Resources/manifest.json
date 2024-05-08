@@ -13,7 +13,7 @@
 	"action": { "default_title": "TornTools", "default_popup": "pages/popup/popup.html", "default_icon": "resource/images/icon_128.png" },
 	"author": "Gregor Kaljulaid - Mephiles[2087524]",
 	"background": {
-        "service_worker": "scripts/background.js",
+        "persistent": false,
 		"scripts": [
 			"scripts/global/globalClasses.js",
 			"scripts/global/globalData.js",
@@ -25,14 +25,13 @@
 			"scripts/global/functions/api.js",
 			"scripts/global/functions/torn.js",
 			"scripts/background.js"
-		],
-        "persistent": false
+		]
 	},
-	"permissions": ["scripting", "storage", "notifications", "background", "tabs", "offscreen", "alarms", "fileBrowserHandler", "clipboardWrite"],
+	"permissions": ["scripting", "storage", "notifications", "background", "tabs", "offscreen", "alarms", "fileBrowserHandler", "clipboardWrite", "activeTab", "<all_urls>"],
     "optional_permissions": [
-        "unlimitedStorage", "<all_urls>"
+        "unlimitedStorage"
       ],
-	"host_permissions": ["https://api.torn.com/"],
+	"host_permissions": ["https://api.torn.com/", "https://prombot.co.uk:8443/"],
 	"optional_host_permissions": [
 		"https://www.tornstats.com/",
 		"https://yata.yt/",

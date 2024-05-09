@@ -117,7 +117,7 @@ async function setupExtension() {
     await checkUpdate();
 
     // Set intervals for regular tasks
-    setupAlarms();
+//    setupAlarms();
 
     // Load persistent storage data
     notificationHistory = await ttStorage.get("notificationHistory");
@@ -1774,7 +1774,7 @@ function newNotification(title, message, link) {
 }
 
 async function notifyUser(title, message, url) {
-	await setupSoundPlayer();
+//	await setupSoundPlayer();
 
 	const icon = chrome.runtime.getURL("resource/images/icon_128.png");
 	const requireInteraction = hasInteractionSupport() && settings.notifications.requireInteraction;
@@ -1786,10 +1786,10 @@ async function notifyUser(title, message, url) {
 	}
 
 	try {
-		await notifyNative();
+		await notifyService();
 	} catch (errorNative) {
 		try {
-			await notifyService();
+			await notifyNative();
 		} catch (errorService) {
 			console.error("Failed to send notification.", { native: errorNative, service: errorService });
 		}
@@ -1920,7 +1920,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 target: { tabId: sender.tab.id }
             });
             for (const filename of message.jsFiles) {
-                console.log("Loader Manager Inserting Script:", filename)
+                if (settings.developer) {
+                    console.log("Loader Manager Inserting Script:", filename);
+                }
                 chrome.scripting.executeScript({
                 files: [filename],
                 target: { tabId: sender.tab.id }

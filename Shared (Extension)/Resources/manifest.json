@@ -5,14 +5,14 @@
 	"description": "Several tools for Torn.",
 	"icons": { "16": "resource/images/icon_16.png", "48": "resource/images/icon_48.png", "128": "resource/images/icon_128.png" },
     "content_security_policy": {
-        "extension_pages": "script-src 'self' https://*.torn.com 'unsafe-inline'; object-src 'self'; style-src 'self' https://*.torn.com 'unsafe-inline'; img-src 'self' https://*.torn.com data:;",
-        "sandbox": "allow-scripts; allow-same-origin;",
-        "content_scripts": "script-src 'self' https://*.torn.com 'unsafe-inline'; connect-src 'self' https://*.torn.com; img-src 'self' https://*.torn.com data:;"
+        "extension_pages": "script-src 'self' https://*.torn.com https://yata.yt; worker-src 'self'; style-src 'self' https://*.torn.com 'unsafe-inline';",
+        "content_scripts": "script-src 'self' https://*.torn.com https://yata.yt; worker-src 'self'; connect-src 'self' https://*.torn.com https://yata.yt;"
     },
     "default_locale": "en",
 	"action": { "default_title": "TornTools", "default_popup": "pages/popup/popup.html", "default_icon": "resource/images/icon_128.png" },
 	"author": "Gregor Kaljulaid - Mephiles[2087524]",
 	"background": {
+        "service_worker": "scripts/background.js",
         "persistent": false,
 		"scripts": [
 			"scripts/global/globalClasses.js",
@@ -24,14 +24,14 @@
 			"scripts/global/functions/utilities.js",
 			"scripts/global/functions/api.js",
 			"scripts/global/functions/torn.js",
-			"scripts/background.js"
+            "scripts/background.js"
 		]
 	},
 	"permissions": ["scripting", "storage", "notifications", "background", "tabs", "offscreen", "alarms", "fileBrowserHandler", "clipboardWrite", "activeTab", "<all_urls>"],
     "optional_permissions": [
         "unlimitedStorage"
       ],
-	"host_permissions": ["https://api.torn.com/", "https://prombot.co.uk:8443/"],
+	"host_permissions": ["https://api.torn.com/", "https://api.prombot.co.uk/"],
 	"optional_host_permissions": [
 		"https://www.tornstats.com/",
 		"https://yata.yt/",
@@ -39,7 +39,7 @@
 		"https://tornuhc.eu/",
 		"https://inq.mavri.dev/",
 		"https://api.no1irishstig.co.uk/",
-		"https://prombot.co.uk:8443/",
+		"https://api.prombot.co.uk/",
 		"https://api.lzpt.io/",
 		"https://what-the-f.de/"
 	],
@@ -315,12 +315,6 @@
 			"run_at": "document_end"
 		},
 		{
-			"matches": ["https://www.torn.com/page.php?sid=education*"],
-			"css": ["scripts/features/grey-completed-courses/ttGreyCompletedCourses.css"],
-			"js": ["scripts/features/grey-completed-courses/ttGreyCompletedCourses.js", "scripts/features/education-finish-time/ttEducationFinishTime.js"],
-			"run_at": "document_end"
-		},
-		{
 			"matches": ["https://www.torn.com/page.php?sid=events*"],
 			"css": [],
 			"js": ["scripts/features/event-worth/ttEventWorth.js"],
@@ -461,16 +455,6 @@
 			"run_at": "document_end"
 		},
 		{
-			"matches": ["https://www.torn.com/index.php?page=people*"],
-			"css": ["scripts/features/stats-estimate/ttStatsEstimate.css"],
-			"js": [
-				"scripts/features/abroad-people-filter/ttPeopleFilter.js",
-				"scripts/features/stats-estimate/statsEstimate.js",
-				"scripts/features/stats-estimate/ttStatsEstimateAbroad.js"
-			],
-			"run_at": "document_end"
-		},
-		{
 			"matches": ["https://www.torn.com/item.php*"],
 			"css": [
 				"scripts/features/quick-items/ttQuickItems.css",
@@ -587,37 +571,6 @@
 			"run_at": "document_end"
 		},
 		{
-			"matches": ["https://www.torn.com/page.php?sid=stocks*"],
-			"css": [
-				"scripts/global/functions/filters.css",
-				"scripts/features/stocks-filter/ttStocksFilter.css",
-				"scripts/features/stock-acronyms/ttStockAcronyms.css",
-				"scripts/features/total-portfolio-value/ttTotalPortfolioValue.css",
-				"scripts/features/hide-stocks/ttHideStocks.css"
-			],
-			"js": [
-				"scripts/global/functions/filters.js",
-				"scripts/features/stocks-filter/ttStocksFilter.js",
-				"scripts/features/stock-acronyms/ttStockAcronyms.js",
-				"scripts/features/total-portfolio-value/ttTotalPortfolioValue.js",
-				"scripts/features/hide-stocks/ttHideStocks.js"
-			],
-			"run_at": "document_end"
-		},
-		{
-			"matches": ["https://www.torn.com/page.php?sid=UserList*"],
-			"css": ["scripts/global/functions/filters.css", "scripts/features/stats-estimate/ttStatsEstimate.css"],
-			"js": [
-				"scripts/global/functions/filters.js",
-				"scripts/content/userlist/ttUserlist.js",
-				"scripts/features/userlist-filter/ttUserlistFilter.js",
-				"scripts/features/stats-estimate/statsEstimate.js",
-				"scripts/features/stats-estimate/ttStatsEstimateUserlist.js",
-				"scripts/features/user-alias/ttUserAliasUserlist.js"
-			],
-			"run_at": "document_end"
-		},
-		{
 			"matches": ["https://www.torn.com/shops.php*", "https://www.torn.com/bigalgunshop.php*"],
 			"css": [
 				"scripts/features/shops-fill-max/ttShopsFillMax.css",
@@ -660,30 +613,6 @@
 				"scripts/features/flying-time/ttFlyingTime.js",
 				"scripts/features/travel-cooldowns/ttTravelCooldowns.js"
 			],
-			"run_at": "document_end"
-		},
-		{
-			"matches": ["https://www.torn.com/war.php?step=warreport*"],
-			"css": ["scripts/features/csv-war-report/ttCSVWarReport.css"],
-			"js": ["scripts/features/csv-war-report/ttCSVWarReport.js"],
-			"run_at": "document_end"
-		},
-		{
-			"matches": ["https://www.torn.com/war.php?step=rankreport*"],
-			"css": ["scripts/features/csv-ranked-war-report/ttCSVRankedWarReport.css"],
-			"js": ["scripts/features/csv-ranked-war-report/ttCSVRankedWarReport.js"],
-			"run_at": "document_end"
-		},
-		{
-			"matches": ["https://www.torn.com/war.php?step=raidreport*"],
-			"css": ["scripts/features/csv-raid-report/ttCSVRaidReport.css"],
-			"js": ["scripts/features/csv-raid-report/ttCSVRaidReport.js"],
-			"run_at": "document_end"
-		},
-		{
-			"matches": ["https://www.torn.com/war.php?step=chainreport*"],
-			"css": ["scripts/features/csv-chain-report/ttCSVChainReport.css"],
-			"js": ["scripts/features/csv-chain-report/ttCSVChainReport.js"],
 			"run_at": "document_end"
 		},
 		{
@@ -739,7 +668,7 @@
 			"run_at": "document_end"
 		},
 		{
-			"matches": ["https://www.torn.com/loader.php*"],
+			"matches": ["https://www.torn.com/loader.php*", "https://www.torn.com/page.php*", "https://www.torn.com/index.php*", "https://www.torn.com/war.php*"],
 			"js": ["scripts/global/loaderManager.js"],
 			"run_at": "document_start"
 		},
@@ -747,18 +676,6 @@
 			"matches": ["https://www.torn.com/city.php*"],
 			"css": ["scripts/features/city-items/ttCityItems.css"],
 			"js": ["scripts/global/functions/torn-items.js", "scripts/features/city-items/ttCityItems.js"],
-			"run_at": "document_end"
-		},
-		{
-			"matches": ["https://www.torn.com/page.php?sid=blackjack*"],
-			"css": ["scripts/features/blackjack-strategy/ttBlackjackStrategy.css"],
-			"js": ["scripts/features/blackjack-strategy/ttBlackjackStrategy.js"],
-			"run_at": "document_end"
-		},
-		{
-			"matches": ["https://www.torn.com/page.php?sid=highlow*"],
-			"css": ["scripts/features/high-low-helper/ttHighLowHelper.css"],
-			"js": ["scripts/features/high-low-helper/ttHighLowHelper.js"],
 			"run_at": "document_end"
 		},
 		{ "matches": ["https://www.torn.com/museum.php*"], "js": ["scripts/features/museum-auto-fill/ttMuseumAutoFill.js"], "run_at": "document_end" },

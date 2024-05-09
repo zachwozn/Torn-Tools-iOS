@@ -108,3 +108,5 @@
 
 	function removeRewards() {}
 })();
+true;
+

@@ -1,5 +1,5 @@
 "use strict";
-
+console.log("The ttMissions.js script runs!");
 (async () => {
 	addXHRListener(async ({ detail: { page, xhr, uri } }) => {
 		if (page === "loader" || page === "loader2") {
@@ -21,3 +21,4 @@
 		}
 	});
 })();
+true;

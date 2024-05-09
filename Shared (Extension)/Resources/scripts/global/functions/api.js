@@ -19,7 +19,7 @@ const FETCH_PLATFORMS = {
 	imperium: "https://inq.mavri.dev/",
 	hela: "https://api.no1irishstig.co.uk/",
 	shadow_healers: "https://api.no1irishstig.co.uk/",
-	prometheus: "https://prombot.co.uk:8443/",
+	prometheus: "https://api.prombot.co.uk/",
 	lzpt: "https://api.lzpt.io/",
 	wtf: "https://what-the-f.de/",
 };

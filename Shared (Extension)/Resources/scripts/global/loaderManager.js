@@ -33,7 +33,7 @@ const scripts = [
 			"run_at": "document_end"
 		},
 		{
-			"matches": ["https://www.torn.com/loader.php?sid=missions"],
+			"matches": ["https://www.torn.com/loader.php?sid=missions*"],
 			"css": ["scripts/features/mission-hints/ttMissionHints.css", "scripts/features/mission-rewards/ttMissionRewards.css"],
 			"js": [
 				"scripts/content/missions/ttMissions.js",
@@ -47,14 +47,99 @@ const scripts = [
 			"css": ["scripts/features/weapon-bonus-information/ttWeaponBonusInformation.css"],
 			"js": ["scripts/features/weapon-bonus-information/ttWeaponBonusInformation.js"],
 			"run_at": "document_end"
-		}];
+		},
+        {
+            "matches": ["https://www.torn.com/page.php?sid=education*"],
+            "css": ["scripts/features/grey-completed-courses/ttGreyCompletedCourses.css"],
+            "js": ["scripts/features/grey-completed-courses/ttGreyCompletedCourses.js", "scripts/features/education-finish-time/ttEducationFinishTime.js"],
+            "run_at": "document_end"
+        },
+        {
+            "matches": ["https://www.torn.com/index.php?page=people*"],
+            "css": ["scripts/features/stats-estimate/ttStatsEstimate.css"],
+            "js": [
+                "scripts/features/abroad-people-filter/ttPeopleFilter.js",
+                "scripts/features/stats-estimate/statsEstimate.js",
+                "scripts/features/stats-estimate/ttStatsEstimateAbroad.js"
+            ],
+            "run_at": "document_end"
+        },
+        {
+            "matches": ["https://www.torn.com/page.php?sid=stocks*"],
+            "css": [
+                "scripts/global/functions/filters.css",
+                "scripts/features/stocks-filter/ttStocksFilter.css",
+                "scripts/features/stock-acronyms/ttStockAcronyms.css",
+                "scripts/features/total-portfolio-value/ttTotalPortfolioValue.css",
+                "scripts/features/hide-stocks/ttHideStocks.css"
+            ],
+            "js": [
+                "scripts/global/functions/filters.js",
+                "scripts/features/stocks-filter/ttStocksFilter.js",
+                "scripts/features/stock-acronyms/ttStockAcronyms.js",
+                "scripts/features/total-portfolio-value/ttTotalPortfolioValue.js",
+                "scripts/features/hide-stocks/ttHideStocks.js"
+            ],
+            "run_at": "document_end"
+        },
+        {
+            "matches": ["https://www.torn.com/page.php?sid=UserList*"],
+            "css": ["scripts/global/functions/filters.css", "scripts/features/stats-estimate/ttStatsEstimate.css"],
+            "js": [
+                "scripts/global/functions/filters.js",
+                "scripts/content/userlist/ttUserlist.js",
+                "scripts/features/userlist-filter/ttUserlistFilter.js",
+                "scripts/features/stats-estimate/statsEstimate.js",
+                "scripts/features/stats-estimate/ttStatsEstimateUserlist.js",
+                "scripts/features/user-alias/ttUserAliasUserlist.js"
+            ],
+            "run_at": "document_end"
+        },
+        {
+            "matches": ["https://www.torn.com/war.php?step=warreport*"],
+            "css": ["scripts/features/csv-war-report/ttCSVWarReport.css"],
+            "js": ["scripts/features/csv-war-report/ttCSVWarReport.js"],
+            "run_at": "document_end"
+        },
+        {
+            "matches": ["https://www.torn.com/war.php?step=rankreport*"],
+            "css": ["scripts/features/csv-ranked-war-report/ttCSVRankedWarReport.css"],
+            "js": ["scripts/features/csv-ranked-war-report/ttCSVRankedWarReport.js"],
+            "run_at": "document_end"
+        },
+        {
+            "matches": ["https://www.torn.com/war.php?step=raidreport*"],
+            "css": ["scripts/features/csv-raid-report/ttCSVRaidReport.css"],
+            "js": ["scripts/features/csv-raid-report/ttCSVRaidReport.js"],
+            "run_at": "document_end"
+        },
+        {
+            "matches": ["https://www.torn.com/war.php?step=chainreport*"],
+            "css": ["scripts/features/csv-chain-report/ttCSVChainReport.css"],
+            "js": ["scripts/features/csv-chain-report/ttCSVChainReport.js"],
+            "run_at": "document_end"
+        },
+        {
+            "matches": ["https://www.torn.com/page.php?sid=blackjack*"],
+            "css": ["scripts/features/blackjack-strategy/ttBlackjackStrategy.css"],
+            "js": ["scripts/features/blackjack-strategy/ttBlackjackStrategy.js"],
+            "run_at": "document_end"
+        },
+        {
+            "matches": ["https://www.torn.com/page.php?sid=highlow*"],
+            "css": ["scripts/features/high-low-helper/ttHighLowHelper.css"],
+            "js": ["scripts/features/high-low-helper/ttHighLowHelper.js"],
+            "run_at": "document_end"
+        }];
 
 loadDatabase().then(() => {
     while (typeof featureManager === "undefined") {};
     console.log("[TornTools] LoaderManager is running.");
     for (const scriptInfo of scripts) {
         const requiredURL = scriptInfo.matches[0].replace("*", "");
-
+        if (settings.developer) {
+            console.log(requiredURL, window.location.href)
+        }
         if (window.location.href.startsWith(requiredURL)) {
             console.log(`[TornTools] LoaderManager - Inserted ${scriptInfo.js} files.`);
             chrome.runtime.sendMessage({

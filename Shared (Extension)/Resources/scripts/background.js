@@ -1915,16 +1915,17 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 				.catch((error) => sendResponse(error));
 			return true;
 		case "injectScripts":
-			chrome.scripting.insertCSS({
-				files: message.cssFiles,
-				target: { tabId: sender.tab.id }
-			});
-			chrome.scripting.executeScript({
-				files: message.jsFiles,
-				injectImmediately: message.jsInjectImmediately,
-				target: { tabId: sender.tab.id }
-			});
-
+            chrome.scripting.insertCSS({
+                files: message.cssFiles,
+                target: { tabId: sender.tab.id }
+            });
+            for (const filename of message.jsFiles) {
+                console.log("Loader Manager Inserting Script:", filename)
+                chrome.scripting.executeScript({
+                files: [filename],
+                target: { tabId: sender.tab.id }
+                }).then(x => console.log(x));
+            };
 			return true;
 		default:
 			sendResponse({ success: false, message: "Unknown action." });

@@ -175,7 +175,7 @@ async function fetchData(location, options = {}) {
 			const controller = new AbortController();
 			const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT);
             
-			fetch('https://cors-anywhere.herokuapp.com/' + fullUrl, { ...parameters, cors: "no-cors", signal: controller.signal })
+			fetch(fullUrl, { ...parameters, cors: "no-cors", signal: controller.signal })
 				.then(async (response) => {
 					let result = {};
 

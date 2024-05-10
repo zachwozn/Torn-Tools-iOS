@@ -25,7 +25,6 @@ console.log("This is the ttMissionHints script running async");
 	}
 
 	async function showHints() {
-        console.log("Startin showHints() function");
 		// Source: https://www.torn.com/forums.php#/p=threads&f=19&t=16130409&b=0&a=0&start=0&to=19915206
 		const MISSION_HINTS = {
 			a_good_day_to_get_hard: {
@@ -339,10 +338,12 @@ console.log("This is the ttMissionHints script running async");
 			},
 		};
 
+		await requireElement(".giver-cont-wrap > div[id^=mission]");
+
 		for (const context of document.findAll(".giver-cont-wrap > div[id^=mission]:not(.tt-modified)")) {
 			const title = context.find(".title-black").childNodes[0].wholeText.replace(/\n/g, "").trim();
-            console.log("Sorting for title");
 			const key = transformTitle(title);
+
 			let task, hint;
 			if (key in MISSION_HINTS) {
 				const mission = MISSION_HINTS[key];
@@ -384,4 +385,3 @@ console.log("This is the ttMissionHints script running async");
 		for (const information of document.findAll(".tt-mission-information")) information.remove();
 	}
 })();
-true;

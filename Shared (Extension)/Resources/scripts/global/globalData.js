@@ -8,25 +8,22 @@ const FORUM_POST = "https://www.torn.com/forums.php#/p=threads&f=67&t=16243863";
 
 const ttStorage = new (class {
     get(key) {
-        return new Promise((resolve, reject) => {
-            const storage = typeof browser !== 'undefined' ? browser.storage.local : chrome.storage.local;
-            storage.get(key, (data) => {
-                const error = typeof browser !== 'undefined' ? chrome.runtime.lastError : chrome.runtime.lastError;
-                if (error) {
-                    console.error("Failed to retrieve from storage:", error);
-                    reject(error);
-                    return;
-                }
-                if (key) {
-                    // Assuming key is a string or array of strings and resolving with specific property or properties.
-                    resolve(typeof key === 'string' ? data[key] : key.reduce((acc, k) => ({...acc, [k]: data[k]}), {}));
+            return new Promise(async (resolve) => {
+                if (Array.isArray(key)) {
+                    const data = await new Promise((resolve) => chrome.storage.local.get(key, (data) => resolve(data)));
+
+                    resolve(key.map((i) => data[i]));
+                } else if (key) {
+                    const data = await new Promise((resolve) => chrome.storage.local.get([key], (data) => resolve(data)));
+
+                    resolve(data[key]);
                 } else {
-                    // If no key is specified, resolve with all data.
+                    const data = await new Promise((resolve) => chrome.storage.local.get(null, (data) => resolve(data)));
+
                     resolve(data);
                 }
             });
-        });
-    }
+        }
     set(object) {
         return new Promise((resolve, reject) => {
             const storage = typeof browser !== 'undefined' ? browser.storage.local : chrome.storage.local;

@@ -2,6 +2,7 @@
 
 (async () => {
 	let mouseY;
+    chrome.runtime.sendMessage({action: "initialize"});
 
 	const feature = featureManager.registerFeature(
 		"Miniprofile Information",

@@ -491,7 +491,7 @@ async function setupPreferences(requireCleanup) {
 	_preferences.find("#external-prometheus").addEventListener("click", (event) => requestOrigin(FETCH_PLATFORMS.prometheus, event));
 	_preferences.find("#external-lzpt").addEventListener("click", (event) => requestOrigin(FETCH_PLATFORMS.lzpt, event));
 
-	_preferences.find("#global-reviveProvider").addEventListener("change", (event) => {
+	/*_preferences.find("#global-reviveProvider").addEventListener("change", (event) => {
 		const provider = event.target.value;
 		if (!provider) return;
 
@@ -515,6 +515,35 @@ async function setupPreferences(requireCleanup) {
 			if (!granted) {
 				alert("Can't select this provider without accepting the permission.", false);
 				event.target.value = settings.pages.global.reviveProvider;
+			}
+		});
+	});*/
+	_preferences.find("#global-reviveProvider-requestOrigin").addEventListener("click", (event) => {
+		const provider = _preferences.find("#global-reviveProvider").value;
+		if (!provider) return;
+
+		let origin;
+		if (provider === "nuke") origin = FETCH_PLATFORMS.nukefamily;
+		else if (provider === "uhc") origin = FETCH_PLATFORMS.uhc;
+		else if (provider === "imperium") origin = FETCH_PLATFORMS.imperium;
+		else if (provider === "hela") origin = FETCH_PLATFORMS.hela;
+		else if (provider === "shadow_healers") origin = FETCH_PLATFORMS.shadow_healers;
+		else if (provider === "wtf") origin = FETCH_PLATFORMS.wtf;
+
+		if (!origin) return;
+
+		if (!chrome.permissions) {
+			_preferences.find("#global-reviveProvider").value = settings.pages.global.reviveProvider;
+			warnMissingPermissionAPI();
+			return;
+		}
+
+		chrome.permissions.request({ origins: [origin + "*"] }, (granted) => {
+			if (!granted) {
+				alert("Cannot obtain permissions. Accept the permission popup for selecting the revive provider.");
+				_preferences.find("#global-reviveProvider").value = settings.pages.global.reviveProvider;
+			} else {
+				sendMessage(`Permissions provided for ${provider}.`, true);
 			}
 		});
 	});

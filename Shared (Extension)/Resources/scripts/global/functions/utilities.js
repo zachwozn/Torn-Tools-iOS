@@ -228,12 +228,9 @@ function toClipboard(text) {
 		}),
 	})
 
-	navigator.clipboard.write([clipboardItem]).then(x => console.log(x)).catch(x => console.log(x));
-	navigator.clipboard.writeText(text).then(x => console.log(3, x)).catch(x => console.log(3, x))
-
-	setTimeout(() => {
-		navigator.clipboard.writeText(text).then(x => console.log(2, x)).catch(x => console.log(2, x));
-	}, 0);
+	navigator.clipboard.writeText(text)
+	.then(x => console.log("Copied data:", x))
+	.catch(x => console.log("Copy error:", x));
 }
 
 function getTimeUntilNextJobUpdate() {

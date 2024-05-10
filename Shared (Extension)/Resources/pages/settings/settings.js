@@ -1661,15 +1661,13 @@ async function setupExport() {
 				popup.find("#popupConfirm").addEventListener("click", (e) => {
 					popup.classList.add("tt-hidden");
 					document.find("#tt-black-overlay").classList.add("tt-hidden");
-					navigator.clipboard.writeText(data);
+					toClipboard(data);
+					alert("Copied database to your clipboard.", true);
 				});
 				popup.find("#popupCancel").addEventListener("click", (e) => {
 					popup.classList.add("tt-hidden");
 					document.find("#tt-black-overlay").classList.add("tt-hidden");
 				});
-
-				toClipboard(data);
-				alert("Copied database to your clipboard.", true);
 			})
 			.catch(() => {});
 	});

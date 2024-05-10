@@ -1653,6 +1653,21 @@ async function setupExport() {
 			.then(async ({ api_key: exportApi }) => {
 				const data = JSON.stringify(await getExportData(exportApi));
 
+				const popup = document.find("#tt-confirmation-popup");
+				document.find("#tt-black-overlay").classList.remove("tt-hidden");
+				popup.classList.remove("tt-hidden");
+				popup.find(".title").textContent = "Copy Notice";
+				popup.find(".message").textContent = "Press the below button to copy.";
+				popup.find("#popupConfirm").addEventListener("click", (e) => {
+					popup.classList.add("tt-hidden");
+					document.find("#tt-black-overlay").classList.add("tt-hidden");
+					navigator.clipboard.writeText(data);
+				});
+				popup.find("#popupCancel").addEventListener("click", (e) => {
+					popup.classList.add("tt-hidden");
+					document.find("#tt-black-overlay").classList.add("tt-hidden");
+				});
+
 				toClipboard(data);
 				alert("Copied database to your clipboard.", true);
 			})

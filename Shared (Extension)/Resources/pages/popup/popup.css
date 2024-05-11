@@ -1,5 +1,5 @@
 body {
-    overflow-x: hide;
+    overflow-x: hidden;
     font-size: 75%;
     font-family: "Segoe UI", Arial, sans-serif;
 }
@@ -18,7 +18,7 @@ body.loading *:not(.tt-loading-placeholder) {
 
 body, html {
     overflow-y: auto; /* Only show scrollbar when necessary */
-    overflow-x: hide;
+    overflow-x: hidden;
 }
 
 .subpage {

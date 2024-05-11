@@ -79,8 +79,9 @@
 
 	function viewingTTForumThread() {
 		// https://www.torn.com/forums.php#/p=threads&f=67&t=16243863
+        // https://www.torn.com/forums.php#/p=threads&f=67&t=16398395
 
 		const hashParams = getHashParameters();
-		return hashParams.get("p") === "threads" && parseInt(hashParams.get("f")) === 67 && parseInt(hashParams.get("t")) === 16243863;
+		return hashParams.get("p") === "threads" && parseInt(hashParams.get("f")) === 67 && parseInt(hashParams.get("t")) === 16243863 || parseInt(hashParams.get("t")) === 16398395;
 	}
 })();

@@ -4,7 +4,7 @@ chrome = typeof browser !== "undefined" ? browser : chrome;
 
 let isfeatureManagerLoaded = false;
 
-const FORUM_POST = "https://www.torn.com/forums.php#/p=threads&f=67&t=16243863";
+const FORUM_POST = "https://www.torn.com/forums.php#/p=threads&f=67&t=16398395";
 
 const ttStorage = new (class {
     get(key) {

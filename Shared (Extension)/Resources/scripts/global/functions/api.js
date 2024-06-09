@@ -18,6 +18,7 @@ const FETCH_PLATFORMS = {
 	uhc: "https://tornuhc.eu/",
 	imperium: "https://inq.mavri.dev/",
 	hela: "https://api.no1irishstig.co.uk/",
+    who: "https://api.no1irishstig.co.uk/",
 	shadow_healers: "https://api.no1irishstig.co.uk/",
 	prometheus: "https://api.prombot.co.uk/",
 	lzpt: "https://api.lzpt.io/",
@@ -126,6 +127,11 @@ async function fetchData(location, options = {}) {
 
 					path = options.section;
 					break;
+                case "who":
+                    url = FETCH_PLATFORMS.who;
+                    
+                    path = options.section;
+                    break;
 				case "prometheus":
 					url = FETCH_PLATFORMS.prometheus;
 

@@ -476,7 +476,7 @@ async function updateUserdata() {
 		for (const selection of [
 			"personalstats",
 			"stocks",
-			"inventory",
+			// "inventory",
 			"merits",
 			"perks",
 			"networth",
@@ -1879,6 +1879,21 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
 				.then((result) => sendResponse(result))
 				.catch((error) => sendResponse(error));
 			return true;
+        case "injectScripts":
+                    chrome.scripting.insertCSS({
+                        files: message.cssFiles,
+                        target: { tabId: sender.tab.id }
+                    });
+                    for (const filename of message.jsFiles) {
+                        if (settings.developer) {
+                            console.log("Loader Manager Inserting Script:", filename);
+                        }
+                        chrome.scripting.executeScript({
+                        files: [filename],
+                        target: { tabId: sender.tab.id }
+                        }).then(x => console.log(x));
+                    };
+            return true;
 		default:
 			sendResponse({ success: false, message: "Unknown action." });
 			break;

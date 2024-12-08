@@ -14,7 +14,9 @@
 					STATS[stat] = parseInt(json.stats[stat].value.replaceAll(",", ""));
 				}
 
-				triggerCustomListener(EVENT_CHANNELS.GYM_LOAD, { stats: STATS });
+                requireElement("[class*='skeletonWrapper___']", { invert: true }).then(() => {
+                                    triggerCustomListener(EVENT_CHANNELS.GYM_LOAD, { stats: STATS });
+                                });
 			} else if (json && step === "train") {
 				if (!json.success) return;
 

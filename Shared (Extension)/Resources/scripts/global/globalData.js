@@ -503,6 +503,7 @@ const DEFAULT_STORAGE = {
                 candyHappyGains: new DefaultSetting({ type: "boolean", defaultValue: true }),
                 energyWarning: new DefaultSetting({ type: "boolean", defaultValue: true }),
                 medicalLife: new DefaultSetting({ type: "boolean", defaultValue: true }),
+                openedSupplyPackValue: new DefaultSetting({ type: "boolean", defaultValue: true }),
             },
             crimes: {
                 quickCrimes: new DefaultSetting({ type: "boolean", defaultValue: true }),
@@ -620,6 +621,7 @@ const DEFAULT_STORAGE = {
                 rankedWarFilter: new DefaultSetting({ type: "boolean", defaultValue: true }),
                 quickItems: new DefaultSetting({ type: "boolean", defaultValue: true }),
                 stakeout: new DefaultSetting({ type: "boolean", defaultValue: true }),
+                showFactionSpy: new DefaultSetting({ type: "boolean", defaultValue: true }),
             },
             property: {
                 value: new DefaultSetting({ type: "boolean", defaultValue: true }),

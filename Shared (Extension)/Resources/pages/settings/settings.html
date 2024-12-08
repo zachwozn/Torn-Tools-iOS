@@ -594,6 +594,9 @@
 						<div class="option">
 							<input id="popup-stocksOverview" type="checkbox" />
 							<label for="popup-stocksOverview">Enable stocks overview.</label>
+                            <div class="tabbed note">
+                             The popup shows the profit calculated purely from API data which makes it inaccurate by default of 5 minutes.
+                         </div>
 						</div>
 						<div class="option">
 							<input id="popup-notifications" type="checkbox" />
@@ -961,7 +964,14 @@
 							<input id="faction-quickItems" type="checkbox" />
 							<label for="faction-quickItems">Quick items in the armory.</label>
 						</div>
-
+                        <div class="option">
+                            <input id="faction-showFactionSpy" type="checkbox" />
+                            <label for="faction-showFactionSpy">Show spy details of members of a faction you are viewing.</label>
+                            <div class="tabbed note">
+                                This only works if Stats Estimate feature is turned off for factions, wars and ranked wars.<br />
+                                You should also enable TornStats or YATA in the External Services tab.
+                            </div>
+                        </div>
 						<div class="header">OCs</div>
 						<div class="option">
 							<input id="faction-openOc" type="checkbox" />
@@ -1062,6 +1072,10 @@
 							<input id="items-medicalLife" type="checkbox" />
 							<label for="items-medicalLife">Show life information when consuming medical items.</label>
 						</div>
+                        <div class="option">
+                             <input id="items-openedSupplyPackValue" type="checkbox" />
+                             <label for="items-openedSupplyPackValue">Show the total value of items obtained when opening supply pack.</label>
+                         </div>
 
 						<div class="header">Museum Sets</div>
 						<div class="option">
@@ -1388,6 +1402,10 @@
 						<div class="option">
 							<input id="stocks-valueAndProfit" type="checkbox" />
 							<label for="stocks-valueAndProfit">Display total value of portfolio and profits.</label>
+                            <div class="tabbed note">
+                             The current stock price is live (from the stocks page) but the information of stocks you hold is fetched from the Torn API. This
+                             may make the profit shown inaccurate for 30 seconds if you bought or sold stocks (the API data updates after 30 seconds).
+                         </div>
 						</div>
 						<div class="header extra-mb">Hide Stocks</div>
 						<div id="hide-stocks" class="hide-items"></div>

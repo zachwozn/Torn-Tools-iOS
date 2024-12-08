@@ -19,7 +19,7 @@
 	function initialise() {
 		addXHRListener(async ({ detail: { page, xhr, uri } }) => {
 			if (!feature.enabled()) return;
-
+            console.log("TT Racing is working.");
 			if (page === "loader" && uri) {
 				const sid = uri.sid;
 				if (sid !== "racing") return;

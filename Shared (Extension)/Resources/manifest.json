@@ -23,7 +23,7 @@
 			"scripts/global/functions/utilities.js",
 			"scripts/global/functions/api.js",
 			"scripts/global/functions/torn.js",
-            "scripts/background.js"
+			"scripts/background.js"
 		]
 	},
 	"permissions": ["scripting", "storage", "notifications", "background", "tabs", "offscreen", "alarms", "fileBrowserHandler", "clipboardWrite", "activeTab", "<all_urls>"],
@@ -348,7 +348,8 @@
 				"scripts/features/ranked-war-filter/ttRankedWarFilter.css",
 				"scripts/features/medical-life/ttMedicalLife.css",
 				"scripts/features/faction-quick-items/ttFactionQuickItems.css",
-				"scripts/features/faction-stakeouts/ttFactionStakeouts.css"
+				"scripts/features/faction-stakeouts/ttFactionStakeouts.css",
+                "scripts/features/show-faction-spy/ttShowFactionSpy.css"
 			],
 			"js": [
 				"scripts/global/functions/filters.js",
@@ -388,7 +389,8 @@
 				"scripts/features/medical-life/ttMedicalLife.js",
 				"scripts/features/faction-quick-items/ttFactionQuickItems.js",
 				"scripts/features/faction-stakeouts/ttFactionStakeouts.js",
-				"scripts/features/faction-id/ttFactionID.js"
+				"scripts/features/faction-id/ttFactionID.js",
+                "scripts/features/show-faction-spy/ttShowFactionSpy.js"
 			],
 			"run_at": "document_end"
 		},
@@ -467,7 +469,8 @@
 				"scripts/features/alcohol-nerve/ttAlcoholNerve.css",
 				"scripts/features/candy-happy/ttCandyHappy.css",
 				"scripts/features/energy-warning/ttEnergyWarning.css",
-				"scripts/features/medical-life/ttMedicalLife.css"
+                "scripts/features/medical-life/ttMedicalLife.css",
+                "scripts/features/opened-supply-pack-value/ttOpenedSupplyPackValue.css"
 			],
 			"js": [
 				"vendor/drag-drop-touch/DragDropTouch.js",
@@ -485,7 +488,8 @@
 				"scripts/features/candy-happy/ttCandyHappy.js",
 				"scripts/features/no-confirm/ttItemNoConfirm.js",
 				"scripts/features/energy-warning/ttEnergyWarning.js",
-				"scripts/features/medical-life/ttMedicalLife.js"
+                "scripts/features/medical-life/ttMedicalLife.js",
+                "scripts/features/opened-supply-pack-value/ttOpenedSupplyPackValue.js"
 			],
 			"run_at": "document_end"
 		},

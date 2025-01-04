@@ -2,8 +2,8 @@
 
 (async () => {
     const devices = await checkDevice();
-    // if (devices.mobile || devices.tablet) return "Not supported on mobiles or tablets!";
-    if (isFlying()) return;
+    if (devices.mobile || devices.tablet) return "Not supported on mobiles or tablets!";
+    else if (isFlying()) return;
 
     const page = getPage();
 

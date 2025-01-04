@@ -16,7 +16,8 @@ const scripts = [
 				"scripts/features/stats-estimate/ttStatsEstimateAttacks.js",
 				"scripts/features/fair-attack/ttFairAttack.js",
 				"scripts/features/weapon-experience/ttWeaponExperience.js",
-				"scripts/features/page-title/ttPageTitleAttack.js"
+				"scripts/features/page-title/ttPageTitleAttack.js",
+                "scripts/features/ff-scouter/ttFFScouterAttack.js"
 			],
 			"run_at": "document_end"
 		},

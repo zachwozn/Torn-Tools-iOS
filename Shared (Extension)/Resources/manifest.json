@@ -131,7 +131,8 @@
 				"scripts/features/trade-timer/ttTradeTimer.css",
 				"scripts/features/revive-request/ttReviveRequest.css",
 				"scripts/features/user-alias/ttUserAlias.css",
-				"scripts/features/stacking-mode/ttStackingMode.css"
+				"scripts/features/stacking-mode/ttStackingMode.css",
+                "scripts/features/ff-scouter/ttFFScouter.css"
 			],
 			"js": [
 				"scripts/content/global/ttGlobal.js",
@@ -145,7 +146,10 @@
 				"scripts/features/hide-chat/ttHideChat.js",
 				"scripts/features/revive-request/ttReviveRequest.js",
 				"scripts/features/user-alias/ttUserAlias.js",
-				"scripts/features/stacking-mode/ttStackingMode.js"
+				"scripts/features/stacking-mode/ttStackingMode.js",
+                "scripts/features/ff-scouter/ff-scouter.js",
+                "scripts/features/ff-scouter/ttFFScouterMiniProfile.js",
+                "scripts/features/ff-scouter/ttFFScouterGauge.js"
 			],
 			"run_at": "document_end"
 		},
@@ -394,7 +398,8 @@
 				"scripts/features/faction-quick-items/ttFactionQuickItems.js",
 				"scripts/features/faction-stakeouts/ttFactionStakeouts.js",
 				"scripts/features/faction-id/ttFactionID.js",
-                "scripts/features/show-faction-spy/ttShowFactionSpy.js"
+                "scripts/features/show-faction-spy/ttShowFactionSpy.js",
+                "scripts/features/ff-scouter/ttFFScouterFaction.js"
 			],
 			"run_at": "document_end"
 		},
@@ -567,7 +572,8 @@
 				"scripts/features/stats-estimate/statsEstimate.js",
 				"scripts/features/stats-estimate/ttStatsEstimateProfile.js",
 				"scripts/features/creators/ttCreators.js",
-				"scripts/features/user-alias/ttUserAliasProfile.js"
+				"scripts/features/user-alias/ttUserAliasProfile.js",
+                "scripts/features/ff-scouter/ttFFScouterProfile.js"
 			],
 			"run_at": "document_end"
 		},

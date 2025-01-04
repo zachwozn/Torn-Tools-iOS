@@ -74,7 +74,7 @@
 				timer = document.newElement({
 					type: "span",
 					class: "timer",
-					text: formatTime(left, settings),
+                    text: formatTime(left, timerSettings),
 					dataset: {
 						seconds: (left / TO_MILLIS.SECONDS).dropDecimals(),
 						timeSettings: timerSettings,
@@ -83,7 +83,18 @@
 
 				countdownTimers.push(timer);
 			} else timer = document.newElement({ type: "span", class: "timer", text: "max level" });
-
+            
+            if (!hasNotScheduled && npc.scheduled === false) {
+                            hasNotScheduled = true;
+                            content.appendChild(
+                                document.newElement({
+                                    type: "div",
+                                    class: "tt-npc-divider",
+                                    text: "-- not scheduled --",
+                                })
+                            );
+                        }
+            
 			content.appendChild(
 				document.newElement({
 					type: "div",

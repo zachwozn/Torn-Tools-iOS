@@ -30,10 +30,8 @@ class FeatureManager {
             };
 
             const maybeLog = () => {
-                if (settings.developer) { // Check if developer mode is enabled
                     params[0] = this.logPadding + params[0]; // Prepend log padding to the first parameter
                     console.log(...params); // Log the parameters
-                }
             };
 
             await checkAndLog();
@@ -354,12 +352,12 @@ class FeatureManager {
 	display() {
 		if (!this.container) return;
 
-		this.container.setClass(
-			settings.featureDisplay ? "" : "tt-hidden",
-			settings.featureDisplayOnlyFailed ? "only-fails" : "",
-			settings.featureDisplayHideDisabled ? "hide-disabled" : "",
-			settings.featureDisplayHideEmpty ? "hide-empty" : ""
-		);
+        this.container.setClass(
+            settings.featureDisplay ? "" : "tt-hidden",
+            settings.featureDisplayOnlyFailed ? "only-fails" : "",
+            settings.featureDisplayHideDisabled ? "hide-disabled" : "",
+            settings.featureDisplayHideEmpty ? "hide-empty" : ""
+                );
 		this.hideEmptyScopes();
 		this.clearEarlyErrors();
 	}

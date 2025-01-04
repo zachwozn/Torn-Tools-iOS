@@ -96,6 +96,7 @@
                         <li name="last-action">Last Action</li>
                         <li name="stats-estimate">Stats Estimate</li>
                         <li name="user-alias">User Alias</li>
+                        <li name="ff-scouter">FF Scouter</li>
 
                         <li class="header">Pages</li>
                         <li name="home">Home</li>
@@ -259,8 +260,10 @@
                             <select id="global-reviveProvider">
                                 <option value="">none</option>
                             </select>
-                            <button id="global-reviveProvider-requestOrigin">Request permissions for revive provider</button>
-                            <label class="note" for="global-reviveProvider">Revives price varies per revive provider.</label>
+                            <label class="note" for="global-reviveProvider"
+                                >Revive prices vary per revive provider. They can be changed at their will. We have no connection to any revive provider
+                                ourselves.</label
+                            >
                         </div>
                         <div class="option">
                             <input id="global-pageTitles" type="checkbox" />
@@ -827,6 +830,7 @@
                         <div class="option">
                             <input id="external-tornstats" type="checkbox" />
                             <label for="external-tornstats">Connect to TornStats.</label>
+                            <a href="https://tornstats.com/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
 
                             <input id="external-tornstats-key" type="text" placeholder="API key" />
                             <label for="external-tornstats-key" class="tabbed note">
@@ -836,6 +840,7 @@
                         <div class="option">
                             <input id="external-yata" type="checkbox" />
                             <label for="external-yata">Connect to YATA.</label>
+                            <a href="https://yata.yt/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
 
                             <input id="external-yata-key" type="text" placeholder="API key" />
                             <label for="external-yata-key" class="tabbed note">

@@ -1,75 +1,143 @@
 "use strict";
 
 (async () => {
-	if (!getPageStatus().access) return;
+    if (!getPageStatus().access) return;
 
-	// noinspection JSIncompatibleTypesComparison
-	const feature = featureManager.registerFeature(
-		"Highlight Cheap Items",
-		"item market",
-		() => settings.pages.itemmarket.highlightCheapItems !== "",
-		initialiseListeners,
-		showHighlight,
-		removeHighlights,
-		{
-			storage: ["settings.pages.itemmarket.highlightCheapItems"],
-		},
-		() => {
-			if (!hasAPIData()) return "No API access.";
-		}
-	);
+    // noinspection JSIncompatibleTypesComparison
+    const feature = featureManager.registerFeature(
+        "Highlight Cheap Items",
+        "item market",
+        () => settings.pages.itemmarket.highlightCheapItems !== "",
+        initialiseListeners,
+        highlightEverything,
+        removeHighlights,
+        {
+            storage: ["settings.pages.itemmarket.highlightCheapItems"],
+        },
+        () => {
+            if (!hasAPIData()) return "No API access.";
+        }
+    );
 
-	function initialiseListeners() {
-		addXHRListener(({ detail: { page, xhr, json } }) => {
-			if (!feature.enabled()) return;
-			if (page !== "imarket") return;
+    async function initialiseListeners() {
+        CUSTOM_LISTENERS[EVENT_CHANNELS.ITEMMARKET_CATEGORY_ITEMS].push(({ list }) => {
+            if (!feature.enabled()) return;
 
-			const params = new URLSearchParams(xhr.requestBody);
-			const step = params.get("step");
+            highlightItems([...list.findAll("[class*='itemList___'] > li:not(.tt-highlight-modified)")]);
+        });
+        CUSTOM_LISTENERS[EVENT_CHANNELS.ITEMMARKET_CATEGORY_ITEMS_UPDATE].push(({ item }) => {
+            if (!feature.enabled()) return;
 
-			if (step === "getItems") showHighlight(json);
-		});
-	}
+            highlightItems([item]);
+        });
+        CUSTOM_LISTENERS[EVENT_CHANNELS.ITEMMARKET_ITEMS].push(({ item, list }) => {
+            if (!feature.enabled()) return;
 
-	async function showHighlight(items) {
-		removeHighlights();
+            highlightSellers(item, list, false);
+        });
+        CUSTOM_LISTENERS[EVENT_CHANNELS.ITEMMARKET_ITEMS_UPDATE].push(({ item, list }) => {
+            if (!feature.enabled()) return;
 
-		const percentage = 1 - settings.pages.itemmarket.highlightCheapItems / 100;
+            highlightSellers(item, list, true);
+        });
+    }
 
-		if (items) {
-			for (const { itemID: id, price } of items) {
-				const data = torndata.items[id];
-				if (!data) continue;
+    function highlightEverything() {
+        const categoryItems = [...document.findAll("[class*='itemList___'] > li:not(.tt-highlight-modified)")]
+            .map((element) => {
+                const image = element.find("img.torn-item");
+                if (!image) return false;
 
-				const value = data.market_value;
-				if (!value) continue;
+                return {
+                    element,
+                    id: image.src.getNumber(),
+                    price: element.find("[class*='priceAndTotal'] > span").textContent.getNumber(),
+                };
+            })
+            .filter((item) => item.element);
 
-				if (value * percentage < parseInt(price)) continue;
+        handleCategoryItems(categoryItems);
 
-				requireElement(`.item-market-wrap div[aria-expanded="true"]  li[data-item="${id}"]`).then((item) => item.classList.add("tt-highlight-item"));
-			}
-		} else {
-			await requireElement("div[aria-expanded='true'] .pagination-wrap");
-			await requireElement("div[aria-expanded='true'] .pagination-wrap > .ajax-placeholder", { invert: true });
+        const params = getHashParameters();
+        if (params.has("itemID")) {
+            const itemSellers = [...document.findAll("[class*='rowWrapper___']:not(.tt-highlight-modified)")].map((element) => ({
+                element,
+                price: element.find("[class*='price___']").textContent.getNumber(),
+            }));
 
-			for (const item of document.findAll(".item-market-wrap div[aria-expanded='true']  li[data-item]")) {
-				const data = torndata.items[item.dataset.item];
-				if (!data) continue;
+            handleItemSellers(parseInt(params.get("itemID")), itemSellers);
+        }
+    }
 
-				const value = data.market_value;
-				if (!value) continue;
+    function highlightItems(items) {
+        const itemEntries = items
+            .map((element) => {
+                const image = element.find("img.torn-item");
+                if (!image) return false;
 
-				const price = item.find(":scope > [itemid][aria-label]").getAttribute("aria-label").split(": ").last().getNumber();
-				if (!price) continue;
+                return {
+                    element,
+                    id: image.src.getNumber(),
+                    price: element.find("[class*='priceAndTotal'] > span").textContent.getNumber(),
+                };
+            })
+            .filter((item) => item.element);
 
-				if (value * percentage < price) continue;
+        handleCategoryItems(itemEntries);
+    }
 
-				item.classList.add("tt-highlight-item");
-			}
-		}
-	}
+    function highlightSellers(item, list, includeModified) {
+        const itemEntries = [
+            ...list.findAll(
+                `[class*='rowWrapper___']${includeModified ? "" : ":not(.tt-highlight-modified)"},[class*='sellerRow___']:not(:first-child)${includeModified ? "" : ":not(.tt-highlight-modified)"}`
+            ),
+        ].map((element) => ({
+            element,
+            price: element.find("[class*='price___']").textContent.getNumber(),
+        }));
 
-	function removeHighlights() {
-		document.findAll(".tt-highlight-item").forEach((item) => item.classList.remove("tt-highlight-item"));
-	}
+        handleItemSellers(item, itemEntries);
+    }
+
+    /**
+     * Should highlight the given item based on the price?
+     * @param id {number|string}
+     * @param price {number}
+     * @returns {boolean}
+     */
+    function shouldHighlight(id, price) {
+        const percentage = 1 - settings.pages.itemmarket.highlightCheapItems / 100;
+
+        const value = torndata.items[id]?.market_value;
+        if (!value) return false;
+
+        return value * percentage >= price;
+    }
+
+    function handleCategoryItems(items) {
+        items.forEach(({ id, price, element }) => {
+            if (shouldHighlight(id, price)) {
+                element.classList.add("tt-highlight-item", "tt-highlight-modified");
+            } else {
+                element.classList.remove("tt-highlight-item");
+                element.classList.add("tt-highlight-modified");
+            }
+        });
+    }
+
+    function handleItemSellers(id, items) {
+        items.forEach(({ price, element }) => {
+            if (shouldHighlight(id, price)) {
+                element.classList.add("tt-highlight-item", "tt-highlight-modified");
+            } else {
+                element.classList.remove("tt-highlight-item");
+                element.classList.add("tt-highlight-modified");
+            }
+        });
+    }
+
+    function removeHighlights() {
+        document.findAll(".tt-highlight-item").forEach((item) => item.classList.remove("tt-highlight-item"));
+        document.findAll(".tt-highlight-modified").forEach((item) => item.classList.remove("tt-highlight-modified"));
+    }
 })();

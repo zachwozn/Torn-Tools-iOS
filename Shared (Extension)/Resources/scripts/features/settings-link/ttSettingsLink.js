@@ -70,8 +70,9 @@
 				],
 			});
 			const tornContent = document.find(".content-wrapper[role*='main']");
+            
+            tornContent.style.visibility = "hidden";
 
-			tornContent.style.display = "none";
 			tornContent.insertAdjacentElement("afterend", returnToTorn);
 			tornContent.insertAdjacentElement("afterend", ttSettingsIframe);
 			document.body.classList.add("tt-align-left");
@@ -79,7 +80,7 @@
 				document.getElementById("saveSettingsBar")?.remove();
 				returnToTorn.remove();
 				ttSettingsIframe.remove();
-				tornContent.style.display = "block";
+                tornContent.style.visibility = "";
 				document.body.classList.remove("tt-align-left");
 			});
 		});

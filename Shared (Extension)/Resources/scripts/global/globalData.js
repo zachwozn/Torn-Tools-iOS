@@ -568,8 +568,6 @@ const DEFAULT_STORAGE = {
                 worth: new DefaultSetting({ type: "boolean", defaultValue: true }),
                 fillMax: new DefaultSetting({ type: "boolean", defaultValue: true }),
                 maxBuyIgnoreCash: new DefaultSetting({ type: "boolean", defaultValue: false }),
-                redirects: new DefaultSetting({ type: "boolean", defaultValue: true }),
-                redirectsScroll: new DefaultSetting({ type: "boolean", defaultValue: true }),
             },
             trade: {
                 itemValues: new DefaultSetting({ type: "boolean", defaultValue: true }),
@@ -676,7 +674,6 @@ const DEFAULT_STORAGE = {
             noConfirm: {
                 itemEquip: new DefaultSetting({ type: "boolean", defaultValue: true }),
                 tradeAccept: new DefaultSetting({ type: "boolean", defaultValue: false }),
-                marketBuy: new DefaultSetting({ type: "boolean", defaultValue: false }),
                 pointsMarketRemove: new DefaultSetting({ type: "boolean", defaultValue: false }),
                 pointsMarketBuy: new DefaultSetting({ type: "boolean", defaultValue: false }),
                 abroadItemBuy: new DefaultSetting({ type: "boolean", defaultValue: true }),

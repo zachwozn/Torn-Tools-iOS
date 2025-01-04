@@ -13,6 +13,7 @@ if (typeof importScripts !== "undefined")
 			"global/functions/formatting.js",
 			"global/functions/utilities.js",
 			"global/functions/api.js",
+            "global/functions/api-external.js",
 			"global/functions/torn.js",
 		]
 	);

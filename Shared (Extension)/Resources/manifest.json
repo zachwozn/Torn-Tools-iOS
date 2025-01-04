@@ -22,6 +22,7 @@
 			"scripts/global/functions/formatting.js",
 			"scripts/global/functions/utilities.js",
 			"scripts/global/functions/api.js",
+            "scripts/global/functions/api-external.js",
 			"scripts/global/functions/torn.js",
 			"scripts/background.js"
 		]
@@ -40,7 +41,8 @@
 		"https://api.no1irishstig.co.uk/",
 		"https://api.prombot.co.uk/",
 		"https://api.lzpt.io/",
-		"https://what-the-f.de/"
+		"https://what-the-f.de/",
+        "https://tornpal.com/*"
 	],
 	"web_accessible_resources": [
 		{
@@ -95,6 +97,7 @@
 				"scripts/global/functions/utilities.js",
 				"scripts/global/functions/torn.js",
 				"scripts/global/functions/api.js",
+                "scripts/global/functions/api-external.js",
 				"scripts/global/functions/csv.js",
 				"scripts/global/featureManager.js",
 				"scripts/global/elements/checkbox/ttCheckbox.js",
@@ -217,7 +220,8 @@
 				"scripts/global/functions/database.js",
 				"scripts/global/functions/requires.js",
 				"scripts/global/functions/utilities.js",
-				"scripts/global/functions/api.js"
+				"scripts/global/functions/api.js",
+                "scripts/global/functions/api-external.js"
 			],
 			"run_at": "document_start"
 		},

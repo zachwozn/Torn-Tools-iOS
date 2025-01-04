@@ -1501,7 +1501,7 @@ function getPage() {
 
 			break;
 		case "page":
-			page = getSearchParameters().get("sid");
+			page = getSearchParameters().get("sid").toLowerCase();
 			break;
 		case "hospitalview":
 			page = "hospital";

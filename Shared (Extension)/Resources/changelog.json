@@ -1,10 +1,125 @@
 [
     {
-        "version": { "major": 7, "minor": 3, "build": 3 },
+        "version": { "major": 7, "minor": 4, "build": 2 },
         "title": "Beta",
         "date": false,
         "logs": {
             "features": [],
+            "fixes": [
+                { "message": "Correctly count the supply pack value.", "contributor": "DeKleineKobini" },
+                { "message": "Avoid an error on the item market when switching categories.", "contributor": "DeKleineKobini" }
+            ],
+            "changes": [{ "message": "Better optimize calls to tornpal.", "contributor": "DeKleineKobini" }],
+            "removed": []
+        }
+    },
+    {
+        "version": { "major": 7, "minor": 4, "build": 1 },
+        "date": "2025/01/03",
+        "logs": {
+            "fixes": [{ "message": "Include personal stats on the profile box that were accidentally removed again.", "contributor": "DeKleineKobini" }],
+            "changes": [{ "message": "Include missing personal stats on the profile box.", "contributor": "DeKleineKobini" }]
+        }
+    },
+    {
+        "version": { "major": 7, "minor": 4, "build": 0 },
+        "date": "2025/01/03",
+        "logs": {
+            "features": [
+                { "message": "Option for moving the item market category list to the left.", "contributor": "DeKleineKobini" },
+                { "message": "Add ranked war hits and wins to Profile Box.", "contributor": "TheFoxMan" },
+                { "message": "Add easter eggs found and used, territory clears and raid hits to Profile Box.", "contributor": "DeKleineKobini" },
+                {
+                    "message": [
+                        "FairFight Scouter ('FF Scouter') on various pages (profile, mini-profile, attack page and honor bars).",
+                        "Credits to Glasnost [1844049] for TornPal and rDacted [2670953] for the original script ('FF Scouter').",
+                        "Requires 'TornPal' to be enabled as external service."
+                    ],
+                    "contributor": "DeKleineKobini"
+                },
+                { "message": "Add 'Wolverines X' as revive provider.", "contributor": "DeKleineKobini" }
+            ],
+            "fixes": [
+                { "message": "Fix personal stat average injection on Firefox.", "contributor": "tiksan" },
+                { "message": "Fix jail score filter not working properly anymore.", "contributor": "DeKleineKobini" },
+                { "message": "Fix drug details not showing on the item page.", "contributor": "DeKleineKobini" },
+                { "message": "Bugs & Issues forum warning wasn't showing up in all places anymore.", "contributor": "DeKleineKobini" },
+                { "message": "Link market icons to the new item market.", "contributor": "DeKleineKobini" },
+                { "message": "Link market icons for missing sets to the new item market.", "contributor": "DeKleineKobini" },
+                { "message": "Link popup items to the new item market.", "contributor": "DeKleineKobini" },
+                { "message": "Properly show links when using refills through faction quick items.", "contributor": "DeKleineKobini" },
+                { "message": "Avoid errors on the bank page when there is no API key.", "contributor": "DeKleineKobini" }
+            ],
+            "changes": [
+                { "message": "Only show seconds in the oc timer and faction oc timer when there is less than an hour left.", "contributor": "DeKleineKobini" },
+                { "message": "Filter on activity on the enemy list.", "contributor": "DeKleineKobini" },
+                { "message": "Update our external library for sortable lists: SortableJS.", "contributor": "DeKleineKobini" },
+                { "message": "Update our external library for icons: Font Awesome.", "contributor": "DeKleineKobini" },
+                { "message": "Update our external library for charts: ChartJS.", "contributor": "DeKleineKobini" },
+                { "message": "Update our external library for mobile drag and drop: DragDropTouch.", "contributor": "DeKleineKobini" },
+                { "message": "Use API v2 for the Profile Box in preparation for Torn's incoming changes to the personal stats API", "contributor": "Kwack" },
+                { "message": "Show an indication when Loot Ranger has not included every NPC in their scheduled attack.", "contributor": "DeKleineKobini" },
+                { "message": "Update the core team titles to reflect DeKleineKobini rejoining.", "contributor": "DeKleineKobini" },
+                { "message": "Update the missing hint for 'estranged' to include feet.", "contributor": "DeKleineKobini" },
+                { "message": "Detect sidebar conditions better for some sidebar features.", "contributor": "DeKleineKobini" },
+                {
+                    "message": "Adjust revive request prices to be accurate. Prices are no longer the same for every revive provider.",
+                    "contributor": "DeKleineKobini"
+                },
+                { "message": "Add links to the external services, where applicable.", "contributor": "DeKleineKobini" },
+                { "message": "Add support for Firefox for Android in manifest.json.", "contributor": "TheFoxMan" }
+            ],
+            "removed": [
+                { "message": "Removed bazaar prices from the popup, as they are set to be removed from the API.", "contributor": "DeKleineKobini" },
+                { "message": "No longer show token refill as option in the profile box as it's no longer public data.", "contributor": "DeKleineKobini" }
+            ]
+        }
+    },
+    {
+        "version": { "major": 7, "minor": 3, "build": 5 },
+        "title": "Item market overhaul",
+        "date": "2024/11/08",
+        "logs": {
+            "fixes": [
+                { "message": "Display when Live Networth was last updated after 1 hour global cache.", "contributor": "Kwack" },
+                { "message": "Fix stats estimates on the attack page not showing up.", "contributor": "DeKleineKobini" },
+                { "message": "Fix weapon experience on the attack page not showing up.", "contributor": "DeKleineKobini" },
+                { "message": "Fix fair fight modifier on the attack page not showing up.", "contributor": "DeKleineKobini" },
+                { "message": "Fix Popup Market Search for Torn v2 API.", "contributor": "TheFoxMan" }
+            ],
+            "changes": [
+                { "message": "Adapt cheap item highlights to work with the item market overhaul.", "contributor": "DeKleineKobini" },
+                { "message": "Adapt drug details to work with the item market overhaul.", "contributor": "DeKleineKobini" },
+                { "message": "Update some mission hints and tasks.", "contributor": "DeKleineKobini" },
+                { "message": "Detect sidebar conditions better for the OC time feature.", "contributor": "DeKleineKobini" },
+                { "message": "Added a bail cost filter", "contributor": "nao" },
+                {
+                    "message": "Added new feature to calculate the average in personal stats page, can be enabled from Profile page in Settings",
+                    "contributor": "nao"
+                }
+            ],
+            "removed": [
+                { "message": "Remove the bazaar and item market redirect feature, due to the item market overhaul.", "contributor": "DeKleineKobini" },
+                { "message": "Remove the item market no confirm feature, due to the item market overhaul.", "contributor": "DeKleineKobini" },
+                { "message": "Remove the compact item market feature, due to the item market overhaul.", "contributor": "DeKleineKobini" }
+            ]
+        }
+    },
+    {
+        "version": { "major": 7, "minor": 3, "build": 4 },
+        "date": "2024/09/18",
+        "logs": {
+            "features": [{ "message": "Show members stats spies on other faction's pages.", "contributor": "TheFoxMan" }],
+            "fixes": [
+                { "message": "Copy Post for Discord not working due to layout changes.", "contributor": "TheFoxMan" },
+                { "message": "Fixed a race condition breaking the Gym Graph on Firefox", "contributor": "Kwack" }
+            ]
+        }
+    },
+    {
+        "version": { "major": 7, "minor": 3, "build": 3 },
+        "date": "2024/08/29",
+        "logs": {
             "fixes": [
                 { "message": "Avoid crashing the page when opening the torntools settings on some pages.", "contributor": "DeKleineKobini" },
                 { "message": "Fix query selectors on the gym page after Torn's frontend update.", "contributor": "Kwack" },
@@ -13,13 +128,11 @@
                 { "message": "Fix Job Points Tooltip and show it on mobile.", "contributor": "TheFoxMan" },
                 { "message": "Abroad Stock Table on People page.", "contributor": "TheFoxMan" }
             ],
-            "changes": [{ "message": "Faction selection of a filter stays even when faction members do not exist in list.", "contributor": "TheFoxMan" }],
-            "removed": []
+            "changes": [{ "message": "Faction selection of a filter stays even when faction members do not exist in list.", "contributor": "TheFoxMan" }]
         }
     },
     {
         "version": { "major": 7, "minor": 3, "build": 2 },
-        "title": "Beta",
         "date": "2024/08/11",
         "logs": {
             "fixes": [

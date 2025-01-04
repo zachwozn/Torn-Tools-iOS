@@ -125,6 +125,8 @@ console.log("This is the ttMissionHints script running async");
 			},
 			estranged: {
 				task: "Injure one of (P)'s legs.",
+                // Source: https://www.torn.com/forums.php#/p=threads&f=19&t=16207483&b=0&a=0&start=0&to=21149672
+                hint: "Feet count as legs in this instance.",
 			},
 			family_ties: {
 				task: "Hospitalize (P) 3 times",

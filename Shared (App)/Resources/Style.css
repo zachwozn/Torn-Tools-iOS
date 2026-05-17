@@ -98,11 +98,25 @@ ul.bars {
 }
 
 ul.bars li {
+    position: relative;
     display: flex;
     flex-direction: column;
     padding: 8px 10px;
     border-radius: 8px;
     background: rgba(127, 127, 127, 0.12);
+    overflow: hidden;
+}
+
+/* The colored fill: a horizontal bar at the bottom of each tile, width = pct */
+ul.bars li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: var(--pct, 0%);
+    background: var(--fill, #888);
+    transition: width 0.25s ease;
 }
 
 ul.bars .label {
@@ -119,6 +133,40 @@ ul.bars .value {
 ul.bars .pct {
     font-size: 0.85em;
     opacity: 0.75;
+}
+
+/* Cooldowns: stacked rows with a "ready" pill or remaining time */
+ul.cooldowns {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+ul.cooldowns li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: rgba(127, 127, 127, 0.12);
+    font-size: 0.95em;
+}
+
+ul.cooldowns .label {
+    text-transform: capitalize;
+    opacity: 0.85;
+}
+
+ul.cooldowns .status.ready {
+    color: #2ec27e;
+    font-weight: 600;
+}
+
+ul.cooldowns .status.active {
+    opacity: 0.8;
 }
 
 ol#tt-history {
@@ -143,4 +191,73 @@ ol#tt-history:empty::before {
     content: "No notifications yet.";
     opacity: 0.6;
     font-size: 0.85em;
+}
+
+/* Notification settings panel */
+.notif-panel {
+    padding: 12px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.notif-panel .hint {
+    font-size: 0.8em;
+    opacity: 0.7;
+    margin: 0 0 8px;
+}
+
+.notif-panel h4 {
+    font-size: 0.9em;
+    margin: 12px 0 4px;
+}
+
+.notif-panel .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.notif-panel .bar-label {
+    width: 60px;
+    font-size: 0.9em;
+    opacity: 0.85;
+}
+
+.notif-panel .thr-buckets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex: 1;
+}
+
+.notif-panel .thr-bucket {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: rgba(127, 127, 127, 0.12);
+    font-size: 0.85em;
+    cursor: pointer;
+    user-select: none;
+}
+
+.notif-panel .thr-bucket input {
+    margin: 0;
+}
+
+.notif-panel .flag-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 0.95em;
+    cursor: pointer;
+}
+
+.notif-panel select {
+    padding: 6px 8px;
+    font-size: 0.95em;
+    border-radius: 6px;
 }

@@ -30,26 +30,36 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
         os_log(.default, "Received message from browser.runtime.sendNativeMessage: %@ (profile: %@)", String(describing: message), profile?.uuidString ?? "none")
 
+        // Heartbeat: stamp the App Group so the App-side UI can verify that
+        // the extension's process can actually write to the shared container.
+        SharedStorage.extensionHeartbeat = Date()
+
         guard let dict = message as? [String: Any], let type = dict["type"] as? String else {
-            respond(context: context, payload: [ "echo": message as Any ])
+            SharedStorage.extensionLastMessage = "(untyped)"
+            respond(context: context, payload: [ "echo": message as Any, "extDiag": SharedStorage.diagnostics ])
             return
         }
+        SharedStorage.extensionLastMessage = type
 
         switch type {
         case "notify":
             scheduleNotification(payload: dict) { reply in
-                self.respond(context: context, payload: reply)
+                var enriched = reply
+                enriched["extDiag"] = SharedStorage.diagnostics
+                self.respond(context: context, payload: enriched)
             }
         case "sync-stats":
             handleSyncStats(payload: dict)
-            respond(context: context, payload: [ "ok": true ])
+            respond(context: context, payload: [ "ok": true, "extDiag": SharedStorage.diagnostics ])
         case "sync-settings":
             handleSyncSettings(payload: dict)
-            respond(context: context, payload: [ "ok": true ])
+            respond(context: context, payload: [ "ok": true, "extDiag": SharedStorage.diagnostics ])
         case "get-state":
-            respond(context: context, payload: snapshotState())
+            var snap = snapshotState()
+            snap["extDiag"] = SharedStorage.diagnostics
+            respond(context: context, payload: snap)
         default:
-            respond(context: context, payload: [ "echo": message as Any ])
+            respond(context: context, payload: [ "echo": message as Any, "extDiag": SharedStorage.diagnostics ])
         }
     }
 

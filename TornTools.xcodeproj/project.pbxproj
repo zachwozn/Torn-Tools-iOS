@@ -9,23 +9,23 @@
 /* Begin PBXBuildFile section */
 		E10641042BDE311700064FC7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E10641032BDE311700064FC7 /* Info.plist */; };
 		E10641092BDF1D0B00064FC7 /* TornTools Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E155A0DD2BDB494500CBCFD4 /* TornTools Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E10645E42BDF220A00064FC7 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = E10645D32BDF1FA500064FC7 /* scripts */; };
-		E10645E52BDF220B00064FC7 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = E10645D32BDF1FA500064FC7 /* scripts */; };
+		E10645E42BDF220A00064FC7 /* content-scripts in Resources */ = {isa = PBXBuildFile; fileRef = E10645D32BDF1FA500064FC7 /* content-scripts */; };
+		E10645E52BDF220B00064FC7 /* content-scripts in Resources */ = {isa = PBXBuildFile; fileRef = E10645D32BDF1FA500064FC7 /* content-scripts */; };
 		E10645EC2BDF226900064FC7 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = E10643EC2BDF1F4C00064FC7 /* manifest.json */; };
 		E10645F12BDF22CC00064FC7 /* changelog.json in Resources */ = {isa = PBXBuildFile; fileRef = E10645F02BDF22CC00064FC7 /* changelog.json */; };
 		E10645F22BDF22CD00064FC7 /* changelog.json in Resources */ = {isa = PBXBuildFile; fileRef = E10645F02BDF22CC00064FC7 /* changelog.json */; };
 		E10645F32BDF22DF00064FC7 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = E10643EC2BDF1F4C00064FC7 /* manifest.json */; };
-		E10645F42BDF231E00064FC7 /* vendor in Resources */ = {isa = PBXBuildFile; fileRef = E10645D42BDF1FA500064FC7 /* vendor */; };
-		E10645F52BDF231F00064FC7 /* vendor in Resources */ = {isa = PBXBuildFile; fileRef = E10645D42BDF1FA500064FC7 /* vendor */; };
-		E10645F62BDF232C00064FC7 /* pages in Resources */ = {isa = PBXBuildFile; fileRef = E10645CD2BDF1F8E00064FC7 /* pages */; };
-		E10645F72BDF232D00064FC7 /* pages in Resources */ = {isa = PBXBuildFile; fileRef = E10645CD2BDF1F8E00064FC7 /* pages */; };
-		E10645F82BDF232F00064FC7 /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = E10645CA2BDF1F8600064FC7 /* _locales */; };
-		E10645F92BDF233000064FC7 /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = E10645CA2BDF1F8600064FC7 /* _locales */; };
+		E10645F42BDF231E00064FC7 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = E10645D42BDF1FA500064FC7 /* icons */; };
+		E10645F52BDF231F00064FC7 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = E10645D42BDF1FA500064FC7 /* icons */; };
+		E10645F62BDF232C00064FC7 /* audio in Resources */ = {isa = PBXBuildFile; fileRef = E10645CD2BDF1F8E00064FC7 /* audio */; };
+		E10645F72BDF232D00064FC7 /* audio in Resources */ = {isa = PBXBuildFile; fileRef = E10645CD2BDF1F8E00064FC7 /* audio */; };
+		E10645F82BDF232F00064FC7 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = E10645CA2BDF1F8600064FC7 /* assets */; };
+		E10645F92BDF233000064FC7 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = E10645CA2BDF1F8600064FC7 /* assets */; };
 		E10645FA2BDF233200064FC7 /* images in Resources */ = {isa = PBXBuildFile; fileRef = E10645C72BDF1F7A00064FC7 /* images */; };
 		E10645FB2BDF233300064FC7 /* images in Resources */ = {isa = PBXBuildFile; fileRef = E10645C72BDF1F7A00064FC7 /* images */; };
 		E10645FF2BDF245600064FC7 /* TornTools Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E155A0D32BDB494500CBCFD4 /* TornTools Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E10646612BE22BFC00064FC7 /* resource in Resources */ = {isa = PBXBuildFile; fileRef = E10646602BE22BFC00064FC7 /* resource */; };
-		E10646622BE22BFC00064FC7 /* resource in Resources */ = {isa = PBXBuildFile; fileRef = E10646602BE22BFC00064FC7 /* resource */; };
+		E10646612BE22BFC00064FC7 /* chunks in Resources */ = {isa = PBXBuildFile; fileRef = E10646602BE22BFC00064FC7 /* chunks */; };
+		E10646622BE22BFC00064FC7 /* chunks in Resources */ = {isa = PBXBuildFile; fileRef = E10646602BE22BFC00064FC7 /* chunks */; };
 		E155A0B92BDB494400CBCFD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155A0B82BDB494400CBCFD4 /* AppDelegate.swift */; };
 		E155A0BB2BDB494400CBCFD4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155A0BA2BDB494400CBCFD4 /* SceneDelegate.swift */; };
 		E155A0BE2BDB494400CBCFD4 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E155A0BD2BDB494400CBCFD4 /* Base */; };
@@ -46,6 +46,55 @@
 		E155A0EF2BDB494500CBCFD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E155A0A52BDB494400CBCFD4 /* Assets.xcassets */; };
 		E155A0F02BDB494500CBCFD4 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155A0A72BDB494400CBCFD4 /* SafariWebExtensionHandler.swift */; };
 		E155A0F12BDB494500CBCFD4 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155A0A72BDB494400CBCFD4 /* SafariWebExtensionHandler.swift */; };
+		E16AD6622FB96D730010643C /* safari-bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = E16AD6612FB96D730010643C /* safari-bridge.js */; };
+		E16AD6632FB96D730010643C /* safari-bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = E16AD6612FB96D730010643C /* safari-bridge.js */; };
+		E16AD6642FB96D730010643C /* safari-bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = E16AD6612FB96D730010643C /* safari-bridge.js */; };
+		E16AD6662FB976A80010643C /* safari-mobile.css in Resources */ = {isa = PBXBuildFile; fileRef = E16AD6652FB976A80010643C /* safari-mobile.css */; };
+		E16AD6672FB976A80010643C /* safari-mobile.css in Resources */ = {isa = PBXBuildFile; fileRef = E16AD6652FB976A80010643C /* safari-mobile.css */; };
+		E16AD66C2FB981A40010643C /* TornAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AD66B2FB981A40010643C /* TornAPI.swift */; };
+		E16AD66D2FB981A40010643C /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AD6692FB981A40010643C /* NotificationScheduler.swift */; };
+		E16AD66E2FB981A40010643C /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AD66A2FB981A40010643C /* SharedStorage.swift */; };
+		E16AD66F2FB981A40010643C /* TornAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AD66B2FB981A40010643C /* TornAPI.swift */; };
+		E16AD6702FB981A40010643C /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AD6692FB981A40010643C /* NotificationScheduler.swift */; };
+		E16AD6712FB981A40010643C /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AD66A2FB981A40010643C /* SharedStorage.swift */; };
+		E16AD6722FB981A40010643C /* TornAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AD66B2FB981A40010643C /* TornAPI.swift */; };
+		E16AD6732FB981A40010643C /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AD6692FB981A40010643C /* NotificationScheduler.swift */; };
+		E16AD6742FB981A40010643C /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AD66A2FB981A40010643C /* SharedStorage.swift */; };
+		E16AD6752FB981A40010643C /* TornAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AD66B2FB981A40010643C /* TornAPI.swift */; };
+		E16AD6762FB981A40010643C /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AD6692FB981A40010643C /* NotificationScheduler.swift */; };
+		E16AD6772FB981A40010643C /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AD66A2FB981A40010643C /* SharedStorage.swift */; };
+		F00000000000000000000101 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000100 /* background.js */; };
+		F00000000000000000000102 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000100 /* background.js */; };
+		F00000000000000000000104 /* service-worker.js in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000103 /* service-worker.js */; };
+		F00000000000000000000105 /* service-worker.js in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000103 /* service-worker.js */; };
+		F00000000000000000000107 /* offscreen.html in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000106 /* offscreen.html */; };
+		F00000000000000000000108 /* offscreen.html in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000106 /* offscreen.html */; };
+		F0000000000000000000010A /* options.html in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000109 /* options.html */; };
+		F0000000000000000000010B /* options.html in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000109 /* options.html */; };
+		F0000000000000000000010D /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000010C /* popup.html */; };
+		F0000000000000000000010E /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000010C /* popup.html */; };
+		F00000000000000000000110 /* targets.html in Resources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000010F /* targets.html */; };
+		F00000000000000000000111 /* targets.html in Resources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000010F /* targets.html */; };
+		F00000000000000000000113 /* tos.html in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000112 /* tos.html */; };
+		F00000000000000000000114 /* tos.html in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000112 /* tos.html */; };
+		F00000000000000000000116 /* add-debug-info--inject.js in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000115 /* add-debug-info--inject.js */; };
+		F00000000000000000000117 /* add-debug-info--inject.js in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000115 /* add-debug-info--inject.js */; };
+		F00000000000000000000119 /* api-key-focus--inject.js in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000118 /* api-key-focus--inject.js */; };
+		F0000000000000000000011A /* api-key-focus--inject.js in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000118 /* api-key-focus--inject.js */; };
+		F0000000000000000000011C /* efficient-rehab--inject.js in Resources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000011B /* efficient-rehab--inject.js */; };
+		F0000000000000000000011D /* efficient-rehab--inject.js in Resources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000011B /* efficient-rehab--inject.js */; };
+		F0000000000000000000011F /* fetch--inject.js in Resources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000011E /* fetch--inject.js */; };
+		F00000000000000000000120 /* fetch--inject.js in Resources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000011E /* fetch--inject.js */; };
+		F00000000000000000000122 /* item-no-confirm--inject.js in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000121 /* item-no-confirm--inject.js */; };
+		F00000000000000000000123 /* item-no-confirm--inject.js in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000121 /* item-no-confirm--inject.js */; };
+		F00000000000000000000125 /* no-outside-link-alert--inject.js in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000124 /* no-outside-link-alert--inject.js */; };
+		F00000000000000000000126 /* no-outside-link-alert--inject.js in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000124 /* no-outside-link-alert--inject.js */; };
+		F00000000000000000000128 /* points-value--inject.js in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000127 /* points-value--inject.js */; };
+		F00000000000000000000129 /* points-value--inject.js in Resources */ = {isa = PBXBuildFile; fileRef = F00000000000000000000127 /* points-value--inject.js */; };
+		F0000000000000000000012B /* trade-open-chat--inject.js in Resources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000012A /* trade-open-chat--inject.js */; };
+		F0000000000000000000012C /* trade-open-chat--inject.js in Resources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000012A /* trade-open-chat--inject.js */; };
+		F0000000000000000000012E /* xhr--inject.js in Resources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000012D /* xhr--inject.js */; };
+		F0000000000000000000012F /* xhr--inject.js in Resources */ = {isa = PBXBuildFile; fileRef = F0000000000000000000012D /* xhr--inject.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,12 +161,12 @@
 		E10641052BDE316800064FC7 /* LiveExecutionResultsLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LiveExecutionResultsLogger.framework; path = Platforms/MacOSX.platform/Developer/Library/Frameworks/LiveExecutionResultsLogger.framework; sourceTree = DEVELOPER_DIR; };
 		E10643EC2BDF1F4C00064FC7 /* manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
 		E10645C72BDF1F7A00064FC7 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
-		E10645CA2BDF1F8600064FC7 /* _locales */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _locales; sourceTree = "<group>"; };
-		E10645CD2BDF1F8E00064FC7 /* pages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = pages; sourceTree = "<group>"; };
-		E10645D32BDF1FA500064FC7 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = "<group>"; };
-		E10645D42BDF1FA500064FC7 /* vendor */ = {isa = PBXFileReference; lastKnownFileType = folder; path = vendor; sourceTree = "<group>"; };
+		E10645CA2BDF1F8600064FC7 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		E10645CD2BDF1F8E00064FC7 /* audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = audio; sourceTree = "<group>"; };
+		E10645D32BDF1FA500064FC7 /* content-scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "content-scripts"; sourceTree = "<group>"; };
+		E10645D42BDF1FA500064FC7 /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = icons; sourceTree = "<group>"; };
 		E10645F02BDF22CC00064FC7 /* changelog.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = changelog.json; sourceTree = "<group>"; };
-		E10646602BE22BFC00064FC7 /* resource */ = {isa = PBXFileReference; lastKnownFileType = folder; path = resource; sourceTree = "<group>"; };
+		E10646602BE22BFC00064FC7 /* chunks */ = {isa = PBXFileReference; lastKnownFileType = folder; path = chunks; sourceTree = "<group>"; };
 		E155A0A02BDB494400CBCFD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = ../Base.lproj/Main.html; sourceTree = "<group>"; };
 		E155A0A12BDB494400CBCFD4 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		E155A0A22BDB494400CBCFD4 /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
@@ -140,6 +189,28 @@
 		E155A0DD2BDB494500CBCFD4 /* TornTools Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TornTools Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E155A0E22BDB494500CBCFD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E155A0E32BDB494500CBCFD4 /* Test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Test.entitlements; sourceTree = "<group>"; };
+		E16AD6612FB96D730010643C /* safari-bridge.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "safari-bridge.js"; sourceTree = "<group>"; };
+		E16AD6652FB976A80010643C /* safari-mobile.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "safari-mobile.css"; sourceTree = "<group>"; };
+		E16AD6682FB97F2D0010643C /* TornTools (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TornTools (iOS).entitlements"; sourceTree = "<group>"; };
+		E16AD6692FB981A40010643C /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
+		E16AD66A2FB981A40010643C /* SharedStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStorage.swift; sourceTree = "<group>"; };
+		E16AD66B2FB981A40010643C /* TornAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TornAPI.swift; sourceTree = "<group>"; };
+		F00000000000000000000100 /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = background.js; sourceTree = "<group>"; };
+		F00000000000000000000103 /* service-worker.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "service-worker.js"; sourceTree = "<group>"; };
+		F00000000000000000000106 /* offscreen.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = offscreen.html; sourceTree = "<group>"; };
+		F00000000000000000000109 /* options.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = options.html; sourceTree = "<group>"; };
+		F0000000000000000000010C /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = popup.html; sourceTree = "<group>"; };
+		F0000000000000000000010F /* targets.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = targets.html; sourceTree = "<group>"; };
+		F00000000000000000000112 /* tos.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = tos.html; sourceTree = "<group>"; };
+		F00000000000000000000115 /* add-debug-info--inject.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "add-debug-info--inject.js"; sourceTree = "<group>"; };
+		F00000000000000000000118 /* api-key-focus--inject.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "api-key-focus--inject.js"; sourceTree = "<group>"; };
+		F0000000000000000000011B /* efficient-rehab--inject.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "efficient-rehab--inject.js"; sourceTree = "<group>"; };
+		F0000000000000000000011E /* fetch--inject.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "fetch--inject.js"; sourceTree = "<group>"; };
+		F00000000000000000000121 /* item-no-confirm--inject.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "item-no-confirm--inject.js"; sourceTree = "<group>"; };
+		F00000000000000000000124 /* no-outside-link-alert--inject.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "no-outside-link-alert--inject.js"; sourceTree = "<group>"; };
+		F00000000000000000000127 /* points-value--inject.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "points-value--inject.js"; sourceTree = "<group>"; };
+		F0000000000000000000012A /* trade-open-chat--inject.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "trade-open-chat--inject.js"; sourceTree = "<group>"; };
+		F0000000000000000000012D /* xhr--inject.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "xhr--inject.js"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,14 +258,32 @@
 		E10643ED2BDF1F4C00064FC7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E10646602BE22BFC00064FC7 /* resource */,
+				E16AD6652FB976A80010643C /* safari-mobile.css */,
+				E16AD6612FB96D730010643C /* safari-bridge.js */,
+				E10646602BE22BFC00064FC7 /* chunks */,
 				E10645F02BDF22CC00064FC7 /* changelog.json */,
 				E10643EC2BDF1F4C00064FC7 /* manifest.json */,
-				E10645D32BDF1FA500064FC7 /* scripts */,
-				E10645D42BDF1FA500064FC7 /* vendor */,
-				E10645CD2BDF1F8E00064FC7 /* pages */,
-				E10645CA2BDF1F8600064FC7 /* _locales */,
+				E10645D32BDF1FA500064FC7 /* content-scripts */,
+				E10645D42BDF1FA500064FC7 /* icons */,
+				E10645CD2BDF1F8E00064FC7 /* audio */,
+				E10645CA2BDF1F8600064FC7 /* assets */,
 				E10645C72BDF1F7A00064FC7 /* images */,
+				F00000000000000000000100 /* background.js */,
+				F00000000000000000000103 /* service-worker.js */,
+				F00000000000000000000106 /* offscreen.html */,
+				F00000000000000000000109 /* options.html */,
+				F0000000000000000000010C /* popup.html */,
+				F0000000000000000000010F /* targets.html */,
+				F00000000000000000000112 /* tos.html */,
+				F00000000000000000000115 /* add-debug-info--inject.js */,
+				F00000000000000000000118 /* api-key-focus--inject.js */,
+				F0000000000000000000011B /* efficient-rehab--inject.js */,
+				F0000000000000000000011E /* fetch--inject.js */,
+				F00000000000000000000121 /* item-no-confirm--inject.js */,
+				F00000000000000000000124 /* no-outside-link-alert--inject.js */,
+				F00000000000000000000127 /* points-value--inject.js */,
+				F0000000000000000000012A /* trade-open-chat--inject.js */,
+				F0000000000000000000012D /* xhr--inject.js */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -202,6 +291,7 @@
 		E155A0982BDB494400CBCFD4 = {
 			isa = PBXGroup;
 			children = (
+				E16AD6682FB97F2D0010643C /* TornTools (iOS).entitlements */,
 				E1063AD02BDDD2EB00064FC7 /* TornTools Extension (iOS).entitlements */,
 				E155A09D2BDB494400CBCFD4 /* Shared (App) */,
 				E155A0A62BDB494400CBCFD4 /* Shared (Extension) */,
@@ -238,6 +328,9 @@
 		E155A0A62BDB494400CBCFD4 /* Shared (Extension) */ = {
 			isa = PBXGroup;
 			children = (
+				E16AD6692FB981A40010643C /* NotificationScheduler.swift */,
+				E16AD66A2FB981A40010643C /* SharedStorage.swift */,
+				E16AD66B2FB981A40010643C /* TornAPI.swift */,
 				E155A0A72BDB494400CBCFD4 /* SafariWebExtensionHandler.swift */,
 				E10643ED2BDF1F4C00064FC7 /* Resources */,
 			);
@@ -425,6 +518,7 @@
 				E155A0E62BDB494500CBCFD4 /* Icon.png in Resources */,
 				E155A0BE2BDB494400CBCFD4 /* Base in Resources */,
 				E155A0E42BDB494500CBCFD4 /* Base in Resources */,
+				E16AD6632FB96D730010643C /* safari-bridge.js in Resources */,
 				E155A0EA2BDB494500CBCFD4 /* Script.js in Resources */,
 				E155A0EE2BDB494500CBCFD4 /* Assets.xcassets in Resources */,
 				E155A0C12BDB494400CBCFD4 /* Base in Resources */,
@@ -450,14 +544,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E10645F82BDF232F00064FC7 /* _locales in Resources */,
-				E10645F42BDF231E00064FC7 /* vendor in Resources */,
-				E10645F62BDF232C00064FC7 /* pages in Resources */,
+				E10645F82BDF232F00064FC7 /* assets in Resources */,
+				E10645F42BDF231E00064FC7 /* icons in Resources */,
+				E10645F62BDF232C00064FC7 /* audio in Resources */,
+				E16AD6672FB976A80010643C /* safari-mobile.css in Resources */,
 				E10645EC2BDF226900064FC7 /* manifest.json in Resources */,
-				E10646612BE22BFC00064FC7 /* resource in Resources */,
-				E10645E42BDF220A00064FC7 /* scripts in Resources */,
+				E10646612BE22BFC00064FC7 /* chunks in Resources */,
+				E10645E42BDF220A00064FC7 /* content-scripts in Resources */,
 				E10645FA2BDF233200064FC7 /* images in Resources */,
 				E10645F12BDF22CC00064FC7 /* changelog.json in Resources */,
+				F00000000000000000000101 /* background.js in Resources */,
+				F00000000000000000000104 /* service-worker.js in Resources */,
+				F00000000000000000000107 /* offscreen.html in Resources */,
+				F0000000000000000000010A /* options.html in Resources */,
+				F0000000000000000000010D /* popup.html in Resources */,
+				F00000000000000000000110 /* targets.html in Resources */,
+				F00000000000000000000113 /* tos.html in Resources */,
+				F00000000000000000000116 /* add-debug-info--inject.js in Resources */,
+				F00000000000000000000119 /* api-key-focus--inject.js in Resources */,
+				F0000000000000000000011C /* efficient-rehab--inject.js in Resources */,
+				F0000000000000000000011F /* fetch--inject.js in Resources */,
+				F00000000000000000000122 /* item-no-confirm--inject.js in Resources */,
+				E16AD6642FB96D730010643C /* safari-bridge.js in Resources */,
+				F00000000000000000000125 /* no-outside-link-alert--inject.js in Resources */,
+				F00000000000000000000128 /* points-value--inject.js in Resources */,
+				F0000000000000000000012B /* trade-open-chat--inject.js in Resources */,
+				F0000000000000000000012E /* xhr--inject.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,14 +577,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E10645F92BDF233000064FC7 /* _locales in Resources */,
-				E10645F52BDF231F00064FC7 /* vendor in Resources */,
-				E10645F72BDF232D00064FC7 /* pages in Resources */,
-				E10645E52BDF220B00064FC7 /* scripts in Resources */,
-				E10646622BE22BFC00064FC7 /* resource in Resources */,
+				E10645F92BDF233000064FC7 /* assets in Resources */,
+				E10645F52BDF231F00064FC7 /* icons in Resources */,
+				E10645F72BDF232D00064FC7 /* audio in Resources */,
+				E16AD6662FB976A80010643C /* safari-mobile.css in Resources */,
+				E10645E52BDF220B00064FC7 /* content-scripts in Resources */,
+				E10646622BE22BFC00064FC7 /* chunks in Resources */,
 				E10645F32BDF22DF00064FC7 /* manifest.json in Resources */,
 				E10645FB2BDF233300064FC7 /* images in Resources */,
 				E10645F22BDF22CD00064FC7 /* changelog.json in Resources */,
+				F00000000000000000000102 /* background.js in Resources */,
+				F00000000000000000000105 /* service-worker.js in Resources */,
+				F00000000000000000000108 /* offscreen.html in Resources */,
+				F0000000000000000000010B /* options.html in Resources */,
+				F0000000000000000000010E /* popup.html in Resources */,
+				F00000000000000000000111 /* targets.html in Resources */,
+				F00000000000000000000114 /* tos.html in Resources */,
+				F00000000000000000000117 /* add-debug-info--inject.js in Resources */,
+				F0000000000000000000011A /* api-key-focus--inject.js in Resources */,
+				F0000000000000000000011D /* efficient-rehab--inject.js in Resources */,
+				F00000000000000000000120 /* fetch--inject.js in Resources */,
+				F00000000000000000000123 /* item-no-confirm--inject.js in Resources */,
+				E16AD6622FB96D730010643C /* safari-bridge.js in Resources */,
+				F00000000000000000000126 /* no-outside-link-alert--inject.js in Resources */,
+				F00000000000000000000129 /* points-value--inject.js in Resources */,
+				F0000000000000000000012C /* trade-open-chat--inject.js in Resources */,
+				F0000000000000000000012F /* xhr--inject.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +616,9 @@
 				E155A0EC2BDB494500CBCFD4 /* ViewController.swift in Sources */,
 				E155A0B92BDB494400CBCFD4 /* AppDelegate.swift in Sources */,
 				E155A0BB2BDB494400CBCFD4 /* SceneDelegate.swift in Sources */,
+				E16AD66F2FB981A40010643C /* TornAPI.swift in Sources */,
+				E16AD6702FB981A40010643C /* NotificationScheduler.swift in Sources */,
+				E16AD6712FB981A40010643C /* SharedStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +626,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E16AD66C2FB981A40010643C /* TornAPI.swift in Sources */,
+				E16AD66D2FB981A40010643C /* NotificationScheduler.swift in Sources */,
+				E16AD66E2FB981A40010643C /* SharedStorage.swift in Sources */,
 				E155A0ED2BDB494500CBCFD4 /* ViewController.swift in Sources */,
 				E155A0CA2BDB494400CBCFD4 /* AppDelegate.swift in Sources */,
 			);
@@ -503,6 +639,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E155A0F02BDB494500CBCFD4 /* SafariWebExtensionHandler.swift in Sources */,
+				E16AD6752FB981A40010643C /* TornAPI.swift in Sources */,
+				E16AD6762FB981A40010643C /* NotificationScheduler.swift in Sources */,
+				E16AD6772FB981A40010643C /* SharedStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +650,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E155A0F12BDB494500CBCFD4 /* SafariWebExtensionHandler.swift in Sources */,
+				E16AD6722FB981A40010643C /* TornAPI.swift in Sources */,
+				E16AD6732FB981A40010643C /* NotificationScheduler.swift in Sources */,
+				E16AD6742FB981A40010643C /* SharedStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,6 +841,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "TornTools Extension (iOS).entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TRJ99M2XU7;
@@ -719,6 +862,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = zachwozn.Test.Extension;
 				PRODUCT_NAME = "TornTools Extension";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -734,6 +878,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "TornTools Extension (iOS).entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TRJ99M2XU7;
@@ -754,6 +899,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = zachwozn.Test.Extension;
 				PRODUCT_NAME = "TornTools Extension";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -771,6 +917,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "TornTools (iOS).entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.4;
@@ -811,6 +958,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "TornTools (iOS).entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.4;
@@ -873,6 +1021,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = zachwozn.Test.Extension;
 				PRODUCT_NAME = "TornTools Extension";
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -906,6 +1055,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = zachwozn.Test.Extension;
 				PRODUCT_NAME = "TornTools Extension";
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -943,6 +1093,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = zachwozn.Test;
 				PRODUCT_NAME = TornTools;
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -979,6 +1130,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = zachwozn.Test;
 				PRODUCT_NAME = TornTools;
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -4,7 +4,7 @@
 <dict>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
-		<string>zachwozn.test</string>
+		<string>com.zachwozn.TornTools.refresh</string>
 	</array>
 	<key>CFBundleDocumentTypes</key>
 	<array>
@@ -42,6 +42,7 @@
 	<array>
 		<string>fetch</string>
 		<string>remote-notification</string>
+		<string>processing</string>
 	</array>
 </dict>
 </plist>

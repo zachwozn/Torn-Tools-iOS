@@ -1,0 +1,102 @@
+/* Safari iOS / iPadOS mobile-friendly overrides for the TornTools options page.
+ *
+ * Injected after the bundled stylesheets by safari-patch.ts. Most rules are
+ * gated on a small viewport (≤ 760px) so they don't affect desktop Safari.
+ *
+ * Conservative pass: only address the things that actually hurt on phone
+ * (iOS focus auto-zoom, no horizontal overflow on wide tables, scrollable
+ * tab strips, safe-area padding). Tap targets get height bumped but NOT
+ * width — width-bumping made standard buttons huge.
+ */
+
+/* Prevent iOS auto-zoom on form-control focus. 16px minimum is the
+ * documented threshold; we use max() so we never shrink existing text. */
+input,
+select,
+textarea {
+	font-size: max(16px, 1em);
+}
+
+@media (max-width: 760px) {
+	html, body {
+		-webkit-text-size-adjust: 100%;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	/* Bumping HEIGHT-only on tap targets, not width. iOS HIG says 44pt height. */
+	button,
+	a.button,
+	[role="button"],
+	input[type="button"],
+	input[type="submit"] {
+		min-height: 36px;
+	}
+	input[type="checkbox"],
+	input[type="radio"] {
+		min-width: 22px;
+		min-height: 22px;
+	}
+	select {
+		min-height: 36px;
+	}
+
+	/* A bit more breathing room on form controls (but not as much as before) */
+	input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]),
+	textarea {
+		padding: 6px 8px;
+	}
+
+	/* Tab bars: allow horizontal scroll so a long list of section tabs
+	 * doesn't wrap awkwardly. Hide the scrollbar visually. */
+	header nav.on-page > ul,
+	nav.tabs,
+	.tab-bar {
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none;
+		flex-wrap: nowrap;
+	}
+	header nav.on-page > ul::-webkit-scrollbar,
+	nav.tabs::-webkit-scrollbar,
+	.tab-bar::-webkit-scrollbar {
+		display: none;
+	}
+
+	/* Tables: horizontal scroll containers so wide data tables don't break layout */
+	table {
+		display: block;
+		max-width: 100%;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	/* Pre/code wrap so long debug strings don't blow out width */
+	pre,
+	code {
+		white-space: pre-wrap;
+		word-break: break-word;
+	}
+
+	/* Modal dialogs full-width, scrollable */
+	.modal,
+	[role="dialog"] {
+		max-width: 100vw;
+		max-height: 90vh;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	/* Disable hover affordances that don't apply to touch */
+	*:hover {
+		cursor: default;
+	}
+}
+
+/* Respect notch / dynamic island on iOS */
+@supports (padding: max(0px)) {
+	body {
+		padding-left: max(env(safe-area-inset-left), 0px);
+		padding-right: max(env(safe-area-inset-right), 0px);
+		padding-bottom: max(env(safe-area-inset-bottom), 0px);
+	}
+}

@@ -1,0 +1,174 @@
+body {
+	min-width: 600px;
+}
+
+#stakeouts #stakeoutList .delete-wrap {
+	text-align: center;
+}
+
+#stakeouts #stakeoutList .delete {
+	width: 25px;
+}
+
+#stakeouts #stakeoutList .delete i {
+	color: red;
+}
+
+table button {
+	height: 24px;
+	line-height: 24px;
+	border: 1px solid lightgray;
+	cursor: pointer;
+	border-radius: 6px;
+	background: #f9f9f9;
+	padding: unset;
+}
+
+/* Styles tables */
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+body.light table tr.header {
+	border-bottom: 2px solid black;
+}
+
+body.dark table tr.header {
+	border-bottom: 2px solid white;
+}
+
+body.light table tr:not(.header):not(:last-child) {
+	border-bottom: 1px solid #5b5b5b;
+}
+
+body.dark table tr:not(.header):not(:last-child) {
+	border-bottom: 1px solid #a7a7a7;
+}
+
+body.light .row:hover {
+	background-color: #ddd;
+}
+
+body.dark .row:hover {
+	background-color: #555;
+}
+
+.id a,
+.name a,
+.last-attack a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.label input {
+	width: 100px;
+}
+body:not(.tt-mobile) main#attackHistory > section {
+	width: 75%;
+}
+
+#attackHistory #attacksList .data {
+	text-align: center;
+}
+
+#attackHistory #attacksList .data.switchable:before {
+	content: var(--currentValue);
+}
+
+#attackHistory #attacksList:not(.switched) .data.switchable {
+	--currentValue: attr(data-amount);
+}
+
+#attackHistory #attacksList.switched .data.switchable {
+	--currentValue: attr(data-percentage);
+}
+
+#attackHistory #attacksList.switched .data.switchable:after {
+	content: "%";
+}
+
+body.light #attackHistory #attacksList .win,
+body.light #attackHistory #attacksList .lose,
+body.light #attackHistory #attacksList .respect {
+	border-left: 2px solid black;
+}
+
+body.dark #attackHistory #attacksList .win,
+body.dark #attackHistory #attacksList .lose,
+body.dark #attackHistory #attacksList .respect {
+	border-left: 2px solid white;
+}
+
+body.light #attackHistory #attacksList .win,
+body.light #attackHistory #attacksList .mug,
+body.light #attackHistory #attacksList .leave,
+body.light #attackHistory #attacksList .hospitalise,
+body.light #attackHistory #attacksList .arrest,
+body.light #attackHistory #attacksList .special,
+body.light #attackHistory #attacksList .stealth,
+body.light #attackHistory #attacksList .defend,
+body.light #attackHistory #attacksList .assist {
+	background-color: #8be38b;
+}
+
+body.dark #attackHistory #attacksList .win,
+body.dark #attackHistory #attacksList .mug,
+body.dark #attackHistory #attacksList .leave,
+body.dark #attackHistory #attacksList .hospitalise,
+body.dark #attackHistory #attacksList .arrest,
+body.dark #attackHistory #attacksList .special,
+body.dark #attackHistory #attacksList .stealth,
+body.dark #attackHistory #attacksList .defend,
+body.dark #attackHistory #attacksList .assist {
+	background-color: #50ac50c7;
+}
+
+body.light #attackHistory #attacksList .lose,
+body.light #attackHistory #attacksList .defend_lost,
+body.light #attackHistory #attacksList .stalemate,
+body.light #attackHistory #attacksList .escapes {
+	background-color: #ee7171;
+}
+
+body.dark #attackHistory #attacksList .lose,
+body.dark #attackHistory #attacksList .defend_lost,
+body.dark #attackHistory #attacksList .stalemate,
+body.dark #attackHistory #attacksList .escapes {
+	background-color: #ac4d3c;
+}
+#stakeouts .status {
+	min-width: 60px;
+}
+
+#stakeouts #stakeoutList .status:before {
+	content: "";
+	height: 12px;
+	width: 12px;
+	border-radius: 50%;
+	display: inline-block;
+	margin-right: 4px;
+}
+
+#stakeouts #stakeoutList .status.offline:before {
+	background-color: #bbb;
+}
+
+#stakeouts #stakeoutList .status.idle:before {
+	background-color: orange;
+}
+
+#stakeouts #stakeoutList .status.online:before {
+	background-color: green;
+}
+
+#stakeouts .alerts-wrap {
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-areas:
+		"div div"
+		"div div"
+		"div div"
+		"div div";
+}

@@ -20,10 +20,73 @@
     <section id="tt-status" class="platform-ios">
         <header>
             <h2>Status</h2>
-            <button id="tt-refresh" type="button">Refresh now</button>
+            <div style="display:flex; gap:6px;">
+                <button id="tt-test-notification" type="button">Test 🔔</button>
+                <button id="tt-refresh" type="button">Refresh now</button>
+            </div>
         </header>
+        <div id="tt-api-key-row" style="margin: 12px 0; padding: 10px; border-radius: 8px; background: rgba(127,127,127,0.12);">
+            <label for="tt-api-key" style="font-size: 0.85em; display:block; margin-bottom: 4px;">Torn API Key (paste from torn.com → settings → api)</label>
+            <div style="display:flex; gap:6px;">
+                <input id="tt-api-key" type="password" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="flex:1;" placeholder="(none set)">
+                <button id="tt-api-key-save" type="button">Save</button>
+            </div>
+            <div id="tt-api-key-status" style="font-size: 0.8em; opacity: 0.7; margin-top: 4px;"></div>
+        </div>
         <div id="tt-sync">No sync yet.</div>
+        <details><summary>Diagnostics</summary>
+            <pre id="tt-diag" style="font-size:11px; white-space:pre-wrap; opacity:0.7;"></pre>
+            <h4 style="margin:8px 0 4px;">Last scheduler run</h4>
+            <pre id="tt-sched-log" style="font-size:11px; white-space:pre-wrap; opacity:0.8;">(none yet)</pre>
+        </details>
         <ul id="tt-bars" class="bars"></ul>
+        <h3>Cooldowns</h3>
+        <ul id="tt-cooldowns" class="cooldowns"></ul>
+        <details id="tt-notifications-settings">
+            <summary><strong>Notifications</strong></summary>
+            <div class="notif-panel">
+                <p class="hint">Tick a percentage to alert when a bar crosses into it from below. Bars only re-alert after dropping and rising back.</p>
+
+                <div class="bar-row" data-bar="energy">
+                    <span class="bar-label">Energy</span>
+                    <span class="thr-buckets"></span>
+                </div>
+                <div class="bar-row" data-bar="nerve">
+                    <span class="bar-label">Nerve</span>
+                    <span class="thr-buckets"></span>
+                </div>
+                <div class="bar-row" data-bar="happy">
+                    <span class="bar-label">Happy</span>
+                    <span class="thr-buckets"></span>
+                </div>
+                <div class="bar-row" data-bar="life">
+                    <span class="bar-label">Life</span>
+                    <span class="thr-buckets"></span>
+                </div>
+
+                <h4>Cooldown alerts</h4>
+                <label class="flag-row"><input type="checkbox" data-flag="alertOnDrugCooldownEnd"> Drug cooldown ends</label>
+                <label class="flag-row"><input type="checkbox" data-flag="alertOnMedicalCooldownEnd"> Medical cooldown ends</label>
+                <label class="flag-row"><input type="checkbox" data-flag="alertOnBoosterCooldownEnd"> Booster cooldown ends</label>
+
+                <h4>Other alerts</h4>
+                <label class="flag-row"><input type="checkbox" data-flag="alertOnLanding"> Travel landing soon</label>
+                <label class="flag-row"><input type="checkbox" data-flag="alertOnNewMessages"> New messages</label>
+                <label class="flag-row"><input type="checkbox" data-flag="alertOnNewEvents"> New events</label>
+
+                <h4>Sound</h4>
+                <select id="tt-sound">
+                    <option value="default">Default iOS chime</option>
+                    <option value="1">notification1.wav</option>
+                    <option value="2">notification2.wav</option>
+                    <option value="3">notification3.wav</option>
+                    <option value="4">notification4.wav</option>
+                    <option value="5">notification5.wav</option>
+                    <option value="mute">No sound</option>
+                </select>
+            </div>
+        </details>
+
         <h3>Recent notifications</h3>
         <ol id="tt-history" reversed></ol>
     </section>
